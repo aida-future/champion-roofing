@@ -222,6 +222,45 @@ assessment.
 - **The brief audit now also checks header navigation coverage** for all thirteen pages the
   brief names. 82/82 pass.
 
+## Round 21: LIVE on Vercel under John's team
+
+**Production URL: https://champion-roofing.vercel.app**
+Project: `johns-projects-a947fdbc/champion-roofing`. Repo: `aida-future/champion-roofing`.
+Deploys from `build/` with `vercel --prod --scope johns-projects-a947fdbc`.
+
+This is the **staging build**: every page carries `noindex, nofollow` and robots.txt
+is `Disallow: /`, exactly as the brief requires until cutover.
+
+**Verified on the live host, not locally:**
+
+- All 35 sitemap URLs return 200.
+- All 12 legacy URLs from the brief redirect in one hop as 308 (Vercel's permanent
+  redirect, which the brief accepts: "one 301 or 308"). `/home` to `/`, `/screens` and
+  `/window-screen-repair` to `/window-replacement`, `/commercial-roofing` to `/commercial`,
+  `/hail-101` to `/storm-damage-roof-repair`, `/blog/tag/*` to `/blog`, and the rest.
+- **The retired solar article returns a true `410 Gone`** with `X-Robots-Tag: noindex`
+  and the designed page body. A static rewrite could only return 200, so it is served by
+  `api/gone.js`, a tiny Vercel function with the 410 HTML inlined at bake time. Never a
+  redirect to the homepage. This took three deploys to get right: Vercel only discovers
+  functions in `/api` at the project root, and `outputDirectory: site` does not bundle
+  `site/` into the function, hence the inlining.
+- 404 for unknown URLs serves the designed error page.
+- Assets: CSS and images 200 with `Cache-Control: public, max-age=31536000, immutable`;
+  favicon.svg, site.webmanifest, sitemap.xml, llms.txt all 200.
+- Real browser, 24 page loads across 12 pages at 1600 and 390: **0 console errors,
+  0 failed requests**. Hero slider and review carousel exercised live. LCP hero image
+  is `loading=eager`.
+
+**At cutover** (when the domain points here):
+1. `STAGING=false node scripts/bake.mjs` then commit and `vercel --prod`. Lifts noindex
+   and opens robots.txt in one switch.
+2. Point `championroofingok.com` and `www` at the Vercel project. The `www` to bare host
+   redirect is already in `vercel.json`.
+3. Submit `https://championroofingok.com/sitemap.xml` in Search Console.
+4. Re run the live checks above against the real domain.
+
+The `.env.local` Vercel created holds an OIDC token; it is gitignored and must stay so.
+
 ## Round 20: on GitHub, ready for Vercel
 
 **Repo: https://github.com/aida-future/champion-roofing** (branch `main`, one commit,
