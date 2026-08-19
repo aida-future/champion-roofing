@@ -113,6 +113,14 @@ function writeLlms(pages) {
   fs.writeFileSync(path.join(SITE, 'llms.txt'), lines.join('\n'));
 }
 
+function writeGoneFunction() {
+  // A real 410 for the retired solar article. Lives inside site/ because that
+  // is the Vercel output directory; the page body is read from the baked 410.
+  const dir = path.join(SITE, 'api');
+  fs.mkdirSync(dir, { recursive: true });
+  fs.copyFileSync(path.join(HERE, 'gone.template.js'), path.join(dir, 'gone.js'));
+}
+
 function writeVercelConfig() {
   const config = {
     // site/ is fully pre baked and committed. Vercel serves it as is: no
@@ -137,12 +145,12 @@ function writeVercelConfig() {
       ...REDIRECTS.map(([source, destination]) => ({ source, destination, permanent: true })),
       { source: '/blog/tag/:slug*', destination: '/blog', permanent: true },
     ],
-    // The deleted solar article must return 410 Gone, not redirect to the
-    // homepage. Vercel redirects cannot emit 410, so it is served as a rewrite
-    // to a 410 page with the status set in headers. Restore only if Champion
-    // wants a factually accurate solar article.
+    // The deleted solar article must return a real 410 Gone, not a redirect to
+    // the homepage. A static rewrite can only return 200, so the URL is routed to
+    // api/gone.js, which serves the designed 410 page with the correct status.
+    // Restore only if Champion wants a factually accurate solar article.
     rewrites: [
-      { source: '/blog-harnessing-solar-energy-integrating-solar', destination: '/410' },
+      { source: '/blog-harnessing-solar-energy-integrating-solar', destination: '/api/gone' },
     ],
     headers: [
       {
@@ -183,6 +191,7 @@ pages.forEach(writePage);
 const indexed = writeSitemap(pages);
 const staging = writeRobots();
 writeLlms(pages);
+writeGoneFunction();
 writeVercelConfig();
 
 console.log(`Baked ${pages.length} pages (${indexed} in sitemap).`);

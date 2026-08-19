@@ -120,7 +120,7 @@
   "rewrites": [
     {
       "source": "/blog-harnessing-solar-energy-integrating-solar",
-      "destination": "/410"
+      "destination": "/api/gone"
     }
   ],
   "headers": [

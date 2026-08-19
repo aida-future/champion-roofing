@@ -53,7 +53,8 @@ ok('/home NOT in sitemap', !inSitemap('/home'));
 ok('no /blog/tag in sitemap', !/blog\/tag/.test(sitemap));
 const solar = redirect('/blog-harnessing-solar-energy-integrating-solar');
 const solarRw = (vercel.rewrites||[]).find((r) => r.source === '/blog-harnessing-solar-energy-integrating-solar');
-ok('solar article: served as 410 page, never redirected to /', !solar && !!solarRw && solarRw.destination === '/410' && exists('/410'), solarRw ? 'rewrite -> /410 page' : 'NO 410 HANDLING');
+const goneFn = fs.existsSync(path.join(SITE, 'api', 'gone.js')) && /res.status(410)/.test(fs.readFileSync(path.join(SITE, 'api', 'gone.js'), 'utf8'));
+ok('solar article: real 410 via function, never redirected to /', !solar && !!solarRw && solarRw.destination === '/api/gone' && goneFn && exists('/410'), solarRw ? 'rewrite -> api/gone, status 410' : 'NO 410 HANDLING');
 
 // NEW PAGES
 ['/roof-repair', '/roof-replacement', '/roof-inspection', '/storm-damage-roof-repair', '/metal-roofing', '/window-replacement', '/commercial/tpo-roofing']
