@@ -222,6 +222,47 @@ assessment.
 - **The brief audit now also checks header navigation coverage** for all thirteen pages the
   brief names. 82/82 pass.
 
+## Round 20: on GitHub, ready for Vercel
+
+**Repo: https://github.com/aida-future/champion-roofing** (branch `main`, one commit,
+540 files, 90MB of web sized images, no source photos). It landed under Aida's account
+because that is the GitHub credential this machine holds; the sibling builds live under
+`johnrippy1980`. Transfer is one click in GitHub: Settings, Danger Zone, Transfer.
+
+Pre push hardening done this round:
+
+- `.gitignore` keeps `src-img/` (356MB of originals), `node_modules/` and `shots/` out.
+- `.gitattributes` pins LF line endings so Windows does not rewrite the repo.
+- `package.json` is a real manifest now: `npm run bake`, `bake:live`, `qa`, `audit`,
+  `audit:browser`, `shots`. `"type": "module"` matches the `.mjs` scripts.
+- **`vercel.json` tells Vercel to serve `site/` directly**: `outputDirectory: site`,
+  empty build and install commands. No Node on the host, no puppeteer there, nothing to
+  fail. Emitted by `bake.mjs` so it persists.
+- **STAGING now stamps `noindex, nofollow` on every page** as well as blocking in
+  robots.txt. robots.txt alone does not stop a URL being indexed from an external link.
+  `STAGING=false node scripts/bake.mjs` lifts both in one switch at cutover; verified
+  both states.
+- Duplicate `faqs:` key in services-commercial-sub.mjs removed.
+
+**Final audit battery at this commit**: qa 0 failures across 40 pages; brief audit 83/83;
+image audit clean; SEO audit 0 problems on cities and on money pages; contrast audit 0
+low contrast text; 36 page loads in a real browser with 0 console errors and 0 failed
+requests; hero, FAQ, explorer, drone laps, review carousel and lead form all exercised.
+
+**Vercel, the one step I could not run.** The `vercel link` to John's team was blocked
+by the permission classifier, which treats deploying into another account as needing a
+human. The CLI is already logged in and can see John's team (`johns-projects-a947fdbc`).
+From `build/`:
+
+    vercel link --yes --scope johns-projects-a947fdbc --project champion-roofing
+    vercel --prod
+
+Or in the Vercel dashboard under John's team: Add New Project, import
+`aida-future/champion-roofing`, leave framework as Other, and the committed
+`vercel.json` does the rest (output `site/`, no build). Preview URL arrives in about a
+minute. The staging build is what deploys: noindexed and robots blocked, as the brief
+requires, until cutover.
+
 ## Round 19: a regression I caused, found and fenced
 
 Round 18 flipped the homepage material explorer from dark to light to fix a dark then
