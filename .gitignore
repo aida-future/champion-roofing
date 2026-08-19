@@ -1,0 +1,13 @@
+# Raw source photography and processing scratch. The processed web assets in
+# site/assets/img are committed; the originals are not.
+src-img/
+favicon-src.svg
+
+# Dependencies and local tooling output
+node_modules/
+shots/
+*.log
+
+# OS and editor noise
+.DS_Store
+Thumbs.db

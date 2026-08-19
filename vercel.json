@@ -1,0 +1,154 @@
+{
+  "outputDirectory": "site",
+  "buildCommand": "",
+  "installCommand": "",
+  "trailingSlash": false,
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.championroofingok.com"
+        }
+      ],
+      "destination": "https://championroofingok.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/roof-inspection-residential",
+      "destination": "/roof-inspection",
+      "permanent": true
+    },
+    {
+      "source": "/screens",
+      "destination": "/window-replacement",
+      "permanent": true
+    },
+    {
+      "source": "/window-screen-repair",
+      "destination": "/window-replacement",
+      "permanent": true
+    },
+    {
+      "source": "/roof-repair-replacement-residential",
+      "destination": "/roof-repair",
+      "permanent": true
+    },
+    {
+      "source": "/roof-repair-replacement",
+      "destination": "/roof-repair",
+      "permanent": true
+    },
+    {
+      "source": "/commercial-roofing",
+      "destination": "/commercial",
+      "permanent": true
+    },
+    {
+      "source": "/roof-repair-replacement-commercial",
+      "destination": "/commercial",
+      "permanent": true
+    },
+    {
+      "source": "/residential",
+      "destination": "/residential-roofing",
+      "permanent": true
+    },
+    {
+      "source": "/roofing",
+      "destination": "/residential-roofing",
+      "permanent": true
+    },
+    {
+      "source": "/hail-101",
+      "destination": "/storm-damage-roof-repair",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tag/material",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tag/design",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tag/Leak",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tag/roofing",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tag/Roofing",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tag/Mistakes",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tag/Repairs",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tag/Damage",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tag/:slug*",
+      "destination": "/blog",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/blog-harnessing-solar-energy-integrating-solar",
+      "destination": "/410"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        }
+      ]
+    }
+  ]
+}

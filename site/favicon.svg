@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Body: top corners cut to meet the ridge, bottom corners rounded. -->
+  <path d="M4 20 L32 3 L60 20 V50 a14 14 0 0 1 -14 14 H18 a14 14 0 0 1 -14 -14 Z" fill="#e22425"/>
+  <!-- Ridge line in ink, sitting on the cut top edges. -->
+  <path d="M0 22 L32 2 L64 22 L64 15 L32 -5 L0 15 Z" fill="#140d0d"/>
+  <!-- heavy C, optically centred a touch low to balance the ridge -->
+  <path d="M45.5 45.2c-2.9 3.1-7.1 5-11.6 5-8.9 0-15.9-7.1-15.9-16s7-16 15.9-16c4.5 0 8.7 1.9 11.6 5l-5.3 5.1c-1.6-1.7-3.9-2.7-6.3-2.7-4.8 0-8.6 3.8-8.6 8.6s3.8 8.6 8.6 8.6c2.4 0 4.7-1 6.3-2.7z" fill="#fff"/>
+</svg>

@@ -1,0 +1,377 @@
+{
+  "real-luxury-brick-home": {
+    "w": 1500,
+    "h": 807,
+    "ratio": 0.538
+  },
+  "real-french-brick-estate": {
+    "w": 1280,
+    "h": 818,
+    "ratio": 0.6391
+  },
+  "real-roofer-ladder-chimney": {
+    "w": 1500,
+    "h": 1125,
+    "ratio": 0.75
+  },
+  "real-ranch-new-roof": {
+    "w": 1500,
+    "h": 1124,
+    "ratio": 0.7493
+  },
+  "real-commercial-campus": {
+    "w": 1500,
+    "h": 1124,
+    "ratio": 0.7493
+  },
+  "real-tile-during": {
+    "w": 1500,
+    "h": 1124,
+    "ratio": 0.7493
+  },
+  "real-timber-pavilion": {
+    "w": 1440,
+    "h": 1440,
+    "ratio": 1
+  },
+  "real-commercial-drone-office": {
+    "w": 1500,
+    "h": 1125,
+    "ratio": 0.75
+  },
+  "real-property-staging": {
+    "w": 768,
+    "h": 1024,
+    "ratio": 1.3333
+  },
+  "real-supply-truck": {
+    "w": 1440,
+    "h": 1440,
+    "ratio": 1
+  },
+  "real-landscape-protection": {
+    "w": 1920,
+    "h": 1440,
+    "ratio": 0.75
+  },
+  "real-multifamily-sign": {
+    "w": 1338,
+    "h": 1500,
+    "ratio": 1.1211
+  },
+  "real-flat-roof-drone": {
+    "w": 1500,
+    "h": 1124,
+    "ratio": 0.7493
+  },
+  "real-tile-complete": {
+    "w": 1024,
+    "h": 767,
+    "ratio": 0.749
+  },
+  "window-install-exterior-two": {
+    "w": 1920,
+    "h": 698,
+    "ratio": 0.3637
+  },
+  "window-install-ladder-exterior": {
+    "w": 1920,
+    "h": 1280,
+    "ratio": 0.6666
+  },
+  "window-install-interior-crew": {
+    "w": 1920,
+    "h": 1282,
+    "ratio": 0.6676
+  },
+  "window-install-exterior-sun": {
+    "w": 1920,
+    "h": 1446,
+    "ratio": 0.7532
+  },
+  "window-screen-fitting": {
+    "w": 1920,
+    "h": 1281,
+    "ratio": 0.6674
+  },
+  "comm-lowslope-black": {
+    "w": 1920,
+    "h": 1076,
+    "ratio": 0.5604
+  },
+  "res-craftsman-gables": {
+    "w": 1920,
+    "h": 1280,
+    "ratio": 0.6667
+  },
+  "comm-retail-aerial": {
+    "w": 1920,
+    "h": 1076,
+    "ratio": 0.5604
+  },
+  "comm-multiunit-aerial": {
+    "w": 1920,
+    "h": 1076,
+    "ratio": 0.5604
+  },
+  "comm-industrial-metal": {
+    "w": 1920,
+    "h": 1076,
+    "ratio": 0.5605
+  },
+  "comm-warehouse-aerial": {
+    "w": 1920,
+    "h": 1143,
+    "ratio": 0.5955
+  },
+  "repair-damaged-shingles": {
+    "w": 1920,
+    "h": 1076,
+    "ratio": 0.5604
+  },
+  "tpo-white-sunlit": {
+    "w": 1920,
+    "h": 1076,
+    "ratio": 0.5604
+  },
+  "res-shake-gable": {
+    "w": 1920,
+    "h": 1272,
+    "ratio": 0.6623
+  },
+  "tpo-aerial-hvac": {
+    "w": 1920,
+    "h": 1501,
+    "ratio": 0.7818
+  },
+  "res-white-house-dark-roof": {
+    "w": 1920,
+    "h": 1282,
+    "ratio": 0.6679
+  },
+  "metal-tile-profile": {
+    "w": 1920,
+    "h": 1280,
+    "ratio": 0.6667
+  },
+  "specialty-clay-tile-home": {
+    "w": 1920,
+    "h": 776,
+    "ratio": 0.404
+  },
+  "metal-standing-seam-commercial": {
+    "w": 1920,
+    "h": 1439,
+    "ratio": 0.7495
+  },
+  "res-dormers-grey": {
+    "w": 1920,
+    "h": 1047,
+    "ratio": 0.5455
+  },
+  "metal-green-tile": {
+    "w": 1920,
+    "h": 731,
+    "ratio": 0.3809
+  },
+  "res-skylight-dark": {
+    "w": 1920,
+    "h": 960,
+    "ratio": 0.5
+  },
+  "storm-tarp-crew": {
+    "w": 1920,
+    "h": 1081,
+    "ratio": 0.5628
+  },
+  "specialty-tile-hands": {
+    "w": 1920,
+    "h": 1307,
+    "ratio": 0.6805
+  },
+  "res-gable-sky": {
+    "w": 1920,
+    "h": 1280,
+    "ratio": 0.6667
+  },
+  "install-nailgun-shingle": {
+    "w": 1920,
+    "h": 1281,
+    "ratio": 0.667
+  },
+  "res-ridge-chimneys": {
+    "w": 1920,
+    "h": 1280,
+    "ratio": 0.6667
+  },
+  "res-luxury-aerial": {
+    "w": 1920,
+    "h": 1279,
+    "ratio": 0.6662
+  },
+  "crew-two-roofers": {
+    "w": 1920,
+    "h": 1281,
+    "ratio": 0.6674
+  },
+  "res-dormer-blue-sky": {
+    "w": 1920,
+    "h": 1280,
+    "ratio": 0.6668
+  },
+  "res-modern-ridge": {
+    "w": 1920,
+    "h": 1281,
+    "ratio": 0.6674
+  },
+  "res-shingle-texture": {
+    "w": 1920,
+    "h": 1277,
+    "ratio": 0.6653
+  },
+  "install-battens-crew": {
+    "w": 1920,
+    "h": 736,
+    "ratio": 0.3835
+  },
+  "storm-tree-on-roof": {
+    "w": 1920,
+    "h": 1442,
+    "ratio": 0.7509
+  },
+  "res-tan-new-roof": {
+    "w": 1920,
+    "h": 1272,
+    "ratio": 0.6624
+  },
+  "gutter-downspout-white": {
+    "w": 1920,
+    "h": 1282,
+    "ratio": 0.6676
+  },
+  "res-brick-dark-tile": {
+    "w": 1920,
+    "h": 1312,
+    "ratio": 0.6832
+  },
+  "install-hand-shingles": {
+    "w": 1920,
+    "h": 1280,
+    "ratio": 0.6667
+  },
+  "replace-aerial-decking": {
+    "w": 1920,
+    "h": 1425,
+    "ratio": 0.7421
+  },
+  "replace-aerial-tearoff": {
+    "w": 1920,
+    "h": 1413,
+    "ratio": 0.7357
+  },
+  "replace-aerial-crew-bundles": {
+    "w": 1920,
+    "h": 1440,
+    "ratio": 0.75
+  },
+  "crew-ladder-ranch": {
+    "w": 1920,
+    "h": 622,
+    "ratio": 0.324
+  },
+  "repair-patch-section": {
+    "w": 1920,
+    "h": 1080,
+    "ratio": 0.5625
+  },
+  "comm-modern-hvac": {
+    "w": 1920,
+    "h": 1289,
+    "ratio": 0.6712
+  },
+  "crew-gable-work": {
+    "w": 1920,
+    "h": 1264,
+    "ratio": 0.6582
+  },
+  "metal-standing-seam-cabin": {
+    "w": 1920,
+    "h": 1280,
+    "ratio": 0.6667
+  },
+  "hail-chalk-marks-grey": {
+    "w": 1920,
+    "h": 1280,
+    "ratio": 0.6667
+  },
+  "res-dormer-row": {
+    "w": 1920,
+    "h": 1281,
+    "ratio": 0.667
+  },
+  "comm-apartment-flat": {
+    "w": 1920,
+    "h": 1439,
+    "ratio": 0.7495
+  },
+  "res-grey-gable-siding": {
+    "w": 1920,
+    "h": 1371,
+    "ratio": 0.7143
+  },
+  "repair-steep-chimney": {
+    "w": 1920,
+    "h": 1441,
+    "ratio": 0.7508
+  },
+  "gutter-worker-install": {
+    "w": 1920,
+    "h": 1076,
+    "ratio": 0.5604
+  },
+  "res-sunset-shingle": {
+    "w": 1920,
+    "h": 1076,
+    "ratio": 0.5604
+  },
+  "gutter-leaf-guard": {
+    "w": 1920,
+    "h": 1076,
+    "ratio": 0.5604
+  },
+  "comm-dark-flat-aerial": {
+    "w": 1920,
+    "h": 1076,
+    "ratio": 0.5604
+  },
+  "metal-dark-chimney-field": {
+    "w": 1920,
+    "h": 1440,
+    "ratio": 0.75
+  },
+  "crew-metal-scaffold": {
+    "w": 1920,
+    "h": 1280,
+    "ratio": 0.6667
+  },
+  "crew-metal-aerial": {
+    "w": 1920,
+    "h": 1440,
+    "ratio": 0.7501
+  },
+  "hail-chalk-marks-tan": {
+    "w": 1400,
+    "h": 1050,
+    "ratio": 0.75
+  },
+  "storm-blue-tarp-aerial": {
+    "w": 1500,
+    "h": 1124,
+    "ratio": 0.7493
+  },
+  "res-arched-window-gable": {
+    "w": 1200,
+    "h": 800,
+    "ratio": 0.6667
+  }
+}
