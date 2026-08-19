@@ -66,8 +66,6 @@ ${pageHero({
   })}
 
 
-${ticker()}
-
 ${split({
     eb: 'The standard',
     title: 'The same crew whether it is a slate roof or a small repair',
@@ -376,8 +374,6 @@ ${pageHero({
     alt: 'Aerial view of a residential roof replacement with a crew working and shingle bundles staged across the deck',
   })}
 
-
-${ticker()}
 
 ${split({
     eb: 'The commitment',

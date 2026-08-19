@@ -340,8 +340,6 @@ ${pageHero({
   </div>
 </section>
 
-${ticker()}
-
 ${related([
     { path: '/roof-inspection', icon: 'drone', h: 'Roof inspection', p: 'Book the free drone assessment.' },
     { path: '/residential-roofing', icon: 'house', h: 'Residential roofing', p: 'Everything we do on houses.' },

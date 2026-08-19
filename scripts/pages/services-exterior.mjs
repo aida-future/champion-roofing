@@ -68,8 +68,6 @@ ${pageHero({
   })}
 
 
-${ticker()}
-
 ${split({
     eb: 'Why this page exists',
     title: 'Thirteen reviews mention gutters. That is not a footnote service.',

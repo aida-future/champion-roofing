@@ -67,8 +67,6 @@ ${pageHero({
   })}
 
 
-${ticker()}
-
 ${split({
     eb: 'Specification',
     title: 'TPO is usually the answer. It is not always the answer.',

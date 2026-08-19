@@ -47,8 +47,6 @@ ${statStrip([
   </div>
 </section>
 
-${ticker()}
-
 <section class="sec sec-dark">
   <div class="wrap">
     <div class="split">

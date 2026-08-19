@@ -210,8 +210,6 @@ ${pageHero({
   })}
 
 
-${ticker()}
-
 ${split({
     eb: 'What we do',
     title: 'We document it, we meet your adjuster, we make the case',
@@ -483,8 +481,6 @@ ${pageHero({
     alt: 'A clay tile roof on a large home in the Oklahoma City metro',
   })}
 
-
-${ticker()}
 
 ${compareSection()}
 
