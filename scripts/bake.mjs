@@ -114,11 +114,13 @@ function writeLlms(pages) {
 }
 
 function writeGoneFunction() {
-  // A real 410 for the retired solar article. Lives inside site/ because that
-  // is the Vercel output directory; the page body is read from the baked 410.
-  const dir = path.join(SITE, 'api');
+  // A real 410 for the retired solar article. Vercel only discovers functions
+  // in /api at the project root, so it lives there and reads site/410.
+  const dir = path.join(SITE, '..', 'api');
   fs.mkdirSync(dir, { recursive: true });
-  fs.copyFileSync(path.join(HERE, 'gone.template.js'), path.join(dir, 'gone.js'));
+  const html = fs.readFileSync(path.join(SITE, '410', 'index.html'), 'utf8');
+  const src = fs.readFileSync(path.join(HERE, 'gone.template.js'), 'utf8').replace('__HTML__', JSON.stringify(html));
+  fs.writeFileSync(path.join(dir, 'gone.js'), src);
 }
 
 function writeVercelConfig() {

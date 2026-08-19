@@ -53,7 +53,8 @@ ok('/home NOT in sitemap', !inSitemap('/home'));
 ok('no /blog/tag in sitemap', !/blog\/tag/.test(sitemap));
 const solar = redirect('/blog-harnessing-solar-energy-integrating-solar');
 const solarRw = (vercel.rewrites||[]).find((r) => r.source === '/blog-harnessing-solar-energy-integrating-solar');
-const goneFn = fs.existsSync(path.join(SITE, 'api', 'gone.js')) && /res.status(410)/.test(fs.readFileSync(path.join(SITE, 'api', 'gone.js'), 'utf8'));
+const goneFile = path.join(ROOT, 'api', 'gone.js');
+const goneFn = fs.existsSync(goneFile) && fs.readFileSync(goneFile, 'utf8').includes('res.status(410)');
 ok('solar article: real 410 via function, never redirected to /', !solar && !!solarRw && solarRw.destination === '/api/gone' && goneFn && exists('/410'), solarRw ? 'rewrite -> api/gone, status 410' : 'NO 410 HANDLING');
 
 // NEW PAGES
