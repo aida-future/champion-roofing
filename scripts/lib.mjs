@@ -5,6 +5,13 @@ import { fileURLToPath } from 'node:url';
 import { BIZ, NAV, SERVICE_MENU } from './data.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
+import { createHash } from 'node:crypto';
+const assetHash = (rel) => {
+  try { return createHash('md5').update(fs.readFileSync(path.join(HERE, '..', 'site', rel))).digest('hex').slice(0, 10); }
+  catch { return Date.now().toString(36); }
+};
+const CSS_V = assetHash('assets/css/app.css');
+const JS_V = assetHash('assets/js/app.js');
 export const MANIFEST = JSON.parse(fs.readFileSync(path.join(HERE, 'img-manifest.json'), 'utf8'));
 
 /* ---------- Icons (SVG only, never emoji) ---------- */
@@ -449,7 +456,7 @@ export function layout(page, body) {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;650;700&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/css/app.css">
+<link rel="stylesheet" href="/assets/css/app.css?v=${CSS_V}">
 <script type="application/ld+json">${JSON.stringify(pageSchema(page))}</script>
 </head>
 <body>
@@ -458,7 +465,7 @@ ${header()}
 ${body}
 </main>
 ${footer()}
-<script src="/assets/js/app.js" defer></script>
+<script src="/assets/js/app.js?v=${JS_V}" defer></script>
 </body>
 </html>`;
 }
