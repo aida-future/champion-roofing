@@ -358,7 +358,7 @@ function footer() {
   <div class="wrap-wide">
     <div class="foot-grid">
       <div class="foot-brand">
-        <img src="/assets/img/champion-logo.png" width="205" height="89" alt="${BIZ.name}">
+        <a href="/" aria-label="${BIZ.name} home"><img src="/assets/img/champion-logo.png" width="205" height="89" alt="${BIZ.name}"></a>
         <p>${BIZ.footerBlurb}</p>
         <div class="socials">
           <a href="${BIZ.facebook}" rel="noopener" target="_blank" aria-label="Champion Roofing on Facebook">${ICONS.facebook}</a>
@@ -389,6 +389,19 @@ function footer() {
       </ul>
     </div>
     <p class="foot-legal">${BIZ.legalNote}</p>
+    <!-- Agency credit. On hover the wolf lifts its head and the howl ripples
+         out as sound arcs, with the tagline sliding in. Pure CSS, no audio. -->
+    <a class="howl" href="https://localhowl.com" rel="noopener" target="_blank" aria-label="Website by Local Howl">
+      <span class="howl-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path class="howl-wolf" d="M7.5 20c-.6-2.2-.3-4.3 1-6l-2-4.5L9 11l1.5-3.5L13 10l4-5.5c1.8 2.8 2.4 5.8 1.4 8.9-.9 2.9-2.9 5-5.9 6.1-1.8.6-3.5.5-5-.5Z"/>
+          <path class="howl-w1" d="M17.5 4.5c1 .3 1.8.9 2.4 1.8"/>
+          <path class="howl-w2" d="M18.6 2.4c1.5.5 2.7 1.4 3.6 2.8"/>
+        </svg>
+      </span>
+      <span class="howl-txt">Powered by <b>Local Howl</b></span>
+      <span class="howl-tag" aria-hidden="true">Rank higher. Get found.</span>
+    </a>
   </div>
 </footer>
 <div class="callbar">
