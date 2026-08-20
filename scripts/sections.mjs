@@ -1006,27 +1006,56 @@ export function errorPage(code, h1, lede, links) {
 </section>`;
 }
 
-/* ---------- Expanding service row ----------
-   All services visible in one row. The active card grows and shows its full
-   photograph with the copy overlaid; the others compress to slim photo cards.
-   Hover or focus moves the focus; on touch everything stacks expanded. All
-   text is always in the DOM, so crawlers read every description. */
+/* ---------- Core services row ----------
+   The reference pattern: equal solid cards in a scroll snap row. The first
+   card is a full photograph with the copy overlaid; the rest carry title and
+   copy on top with the photograph below and an arrow chip. Drag or scroll
+   sideways; on mobile it swipes one card at a time. */
 export function serviceShowcase(eb, title, blurb, items) {
   return `
 <section class="sec">
   <span class="ghost" aria-hidden="true">Services</span>
   <div class="wrap">
-    ${secHead(eb, title, blurb)}
-    <div class="xrow" data-xrow>
-      ${items.map((s, i) => `<a class="xcard${i === 0 ? ' is-open' : ''}" href="${s.path}" data-xcard>
-        <figure class="xcard-media">${img(s.img, s.alt, { sizes: '(max-width:900px) 100vw, 40vw' })}</figure>
-        <span class="xcard-tag">${s.tag}</span>
-        <span class="xcard-body">
-          <span class="xcard-title">${s.h}</span>
-          <span class="xcard-desc">${s.p}</span>
-          <span class="xcard-go">${ICONS.arrowLong}</span>
+    <div class="csr-head" data-reveal>
+      ${eyebrow(eb)}
+      <div class="csr-head-right">
+        <h2>${title}</h2>
+        ${blurb ? `<p>${blurb}</p>` : ''}
+        <div class="btn-row csr-head-cta">${btn('/services', 'View all services', 'btn-dark')}</div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap csr-wrap">
+    <div class="csr-row" data-csrrow tabindex="0" aria-label="Our services, scroll sideways for more">
+      ${items.map((s, i) => i === 0 ? `<a class="csr-card csr-feature" href="${s.path}">
+        <figure class="csr-media">${img(s.img, s.alt, { sizes: '(max-width:900px) 86vw, 24vw' })}</figure>
+        <span class="csr-overlay">
+          <span class="csr-title">${s.h}</span>
+          <span class="csr-desc">${s.p}</span>
         </span>
+        <span class="csr-go">${ICONS.arrow}</span>
+      </a>` : `<a class="csr-card" href="${s.path}">
+        <span class="csr-body">
+          <span class="csr-title">${s.h}</span>
+          <span class="csr-desc">${s.p}</span>
+        </span>
+        <figure class="csr-media">${img(s.img, s.alt, { sizes: '(max-width:900px) 86vw, 24vw' })}</figure>
+        <span class="csr-go">${ICONS.arrow}</span>
       </a>`).join('')}
+      <a class="csr-card csr-more" href="/services">
+        <span class="csr-more-ghost" aria-hidden="true">All</span>
+        <span class="csr-more-body">
+          <span class="csr-title">View all services</span>
+          <span class="csr-desc">Residential, commercial and the exterior work that goes with a roof, in one place.</span>
+        </span>
+        <span class="csr-go">${ICONS.arrow}</span>
+      </a>
+    </div>
+    <div class="csr-ctl">
+      <button class="rcar-btn" type="button" data-csrdir="-1" aria-label="Previous service">${ICONS.arrowLongL}</button>
+      <span class="rcar-count"><b data-csrcur>01</b> / <span data-csrtotal>${String(items.length).padStart(2, '0')}</span></span>
+      <button class="rcar-btn" type="button" data-csrdir="1" aria-label="Next service">${ICONS.arrowLong}</button>
+      <span class="csr-track" aria-hidden="true"><i data-csrbar></i></span>
     </div>
   </div>
 </section>`;

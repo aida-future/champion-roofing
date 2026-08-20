@@ -144,8 +144,8 @@ ${split({
   })}
 
 ${serviceShowcase(
-    'What we do',
-    'Roofing services across the Oklahoma City metro',
+    'Our core services',
+    'Every part of the roof, <em>from small repairs to full commercial systems.</em>',
     'Residential, commercial and specialty roofing, plus the gutter work our customers keep bringing up in reviews.',
     SERVICES,
   )}

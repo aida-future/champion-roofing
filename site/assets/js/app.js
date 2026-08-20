@@ -595,19 +595,70 @@
     });
   }
 
-  /* ---------- Expanding service row ---------- */
-  $$('[data-xrow]').forEach(function (row) {
-    var cards = $$('[data-xcard]', row);
-    function open(n) {
-      cards.forEach(function (c, i) { c.classList.toggle('is-open', i === n); });
+  /* ---------- Core services row: drag to scroll ---------- */
+  $$('[data-csrrow]').forEach(function (row) {
+    var down = false, startX = 0, startLeft = 0, moved = 0;
+    row.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse') return;
+      down = true; moved = 0; startX = e.clientX; startLeft = row.scrollLeft;
+      row.classList.add('is-drag');
+    });
+    window.addEventListener('pointermove', function (e) {
+      if (!down) return;
+      var dx = e.clientX - startX;
+      moved = Math.max(moved, Math.abs(dx));
+      row.scrollLeft = startLeft - dx;
+    });
+    window.addEventListener('pointerup', function () {
+      down = false; row.classList.remove('is-drag');
+    });
+    // A drag must not fire the card link it started on.
+    row.addEventListener('click', function (e) {
+      if (moved > 8) { e.preventDefault(); e.stopPropagation(); moved = 0; }
+    }, true);
+    // Step = one card plus the gap, measured live so it tracks the breakpoint.
+    function step() {
+      var card = row.querySelector('.csr-card');
+      return card ? card.getBoundingClientRect().width + 16 : 340;
     }
-    cards.forEach(function (card, n) {
-      if (finePointer) {
-        card.addEventListener('mouseenter', function () { open(n); });
+    var wrap = row.closest('.csr-wrap') || row.parentElement;
+    var cur = wrap.querySelector('[data-csrcur]');
+    var totalEl = wrap.querySelector('[data-csrtotal]');
+    var bar = wrap.querySelector('[data-csrbar]');
+    var track = wrap.querySelector('.csr-track');
+    function paint() {
+      // Count scroll positions, not cards: with four visible there are three stops.
+      var positions = Math.max(1, Math.round((row.scrollWidth - row.clientWidth) / step()) + 1);
+      if (totalEl) totalEl.textContent = String(positions).padStart(2, '0');
+      var n = Math.min(positions, Math.round(row.scrollLeft / step()) + 1);
+      if (cur) cur.textContent = String(n).padStart(2, '0');
+      if (bar && track) {
+        // The thumb's width is the visible share of the row; its position is
+        // the scrolled share. Width set once per paint, position via transform.
+        var frac = row.clientWidth / row.scrollWidth;
+        var tw = track.clientWidth;
+        bar.style.width = Math.max(28, Math.round(tw * frac)) + 'px';
+        var range = tw - Math.max(28, Math.round(tw * frac));
+        var maxScroll = row.scrollWidth - row.clientWidth;
+        bar.style.transform = 'translateX(' + (maxScroll > 0 ? Math.round((row.scrollLeft / maxScroll) * range) : 0) + 'px)';
       }
-      card.addEventListener('focus', function () { open(n); });
-      // Touch without fine pointer: cards are stacked and fully expanded via
-      // CSS, so a tap simply follows the link. No interception needed.
+      wrap.querySelectorAll('[data-csrdir]').forEach(function (b) {
+        var d = parseInt(b.getAttribute('data-csrdir'), 10);
+        var atStart = row.scrollLeft < 4;
+        var atEnd = row.scrollLeft > row.scrollWidth - row.clientWidth - 4;
+        b.style.opacity = (d < 0 && atStart) || (d > 0 && atEnd) ? '.3' : '';
+      });
+    }
+    wrap.querySelectorAll('[data-csrdir]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        row.scrollBy({ left: parseInt(b.getAttribute('data-csrdir'), 10) * step(), behavior: 'smooth' });
+      });
+    });
+    row.addEventListener('scroll', function () { window.requestAnimationFrame(paint); }, { passive: true });
+    paint();
+    row.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { row.scrollBy({ left: step(), behavior: 'smooth' }); e.preventDefault(); }
+      if (e.key === 'ArrowLeft') { row.scrollBy({ left: -step(), behavior: 'smooth' }); e.preventDefault(); }
     });
   });
 

@@ -46,7 +46,7 @@ for (const path of PAGES) {
       const ratio = (Math.max(L1, L2) + 0.05) / (Math.min(L1, L2) + 0.05);
       const sec = el.closest('section'); const secClass = sec ? sec.className : '';
       const key = secClass + '|' + t.slice(0, 30);
-      if (ratio < 3 && !img && !seen.has(key) && !el.classList.contains('ghost') && fg.a > 0) { seen.add(key); out.push({ ratio: +ratio.toFixed(2), text: t.slice(0, 50), tag: el.tagName.toLowerCase(), cls: (el.className || '').toString().slice(0, 30), section: secClass.slice(0, 34), fg: cs.color, bg: `rgb(${Math.round(bg.r)},${Math.round(bg.g)},${Math.round(bg.b)})` }); }
+      if (ratio < 3 && !img && !seen.has(key) && !el.classList.contains('ghost') && !el.classList.contains('csr-more-ghost') && fg.a > 0) { seen.add(key); out.push({ ratio: +ratio.toFixed(2), text: t.slice(0, 50), tag: el.tagName.toLowerCase(), cls: (el.className || '').toString().slice(0, 30), section: secClass.slice(0, 34), fg: cs.color, bg: `rgb(${Math.round(bg.r)},${Math.round(bg.g)},${Math.round(bg.b)})` }); }
     });
     return out;
   });

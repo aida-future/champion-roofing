@@ -388,6 +388,7 @@ function footer() {
     <div class="foot-bar">
       <span>&copy; <span data-year>2026</span> ${BIZ.legalName}. Oklahoma roofing registration ${BIZ.license}.</span>
       <ul>
+        <li><a href="/services">All services</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/our-work">Our work</a></li>
         <li><a href="/faq">FAQ</a></li>
