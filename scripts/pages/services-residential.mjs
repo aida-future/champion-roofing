@@ -5,7 +5,7 @@ import {
   stickyFeature,
   editorialStack,
   roofBuildUp,
-  pageHero, statStrip, steps, faqSection, serviceGrid, split,
+  pageHero, statStrip, steps, faqSection, serviceGrid, serviceShowcase, split,
   infoGrid, detailAccordion, honestBlock, related, asideCard, ctaBand,
 materialExplorer, compareSection, areasSection, ticker,
 } from '../sections.mjs';
@@ -86,17 +86,17 @@ ${split({
     floatCard: { icon: 'award', title: 'Since 2004', sub: 'Locally owned by Mike Cowan' },
   })}
 
-${serviceGrid(
+${serviceShowcase(
     'Residential services',
-    'What we do on houses',
+    'What we do <em>on houses.</em>',
     'Every one of these is a real service with a real page behind it, not a keyword on a list.',
     [
-      { path: '/roof-repair', tag: 'Repair', h: 'Roof repair', p: 'Leaks, lifted or missing shingles, failed flashing and roof penetrations. We diagnose the cause before quoting.', img: 'repair-damaged-shingles', alt: 'Lifted and damaged asphalt shingles on a residential roof' },
-      { path: '/roof-replacement', tag: 'Replacement', h: 'Roof replacement', p: 'Complete tear off, decking inspected and reported honestly, then a full new system.', img: 'replace-aerial-decking', alt: 'Aerial view of a roof stripped to the decking during replacement' },
-      { path: '/roof-inspection', tag: 'Inspection', h: 'Roof inspection', p: 'Drone flown in three passes, then physical and attic investigation if needed. Report by email.', img: 'hail-chalk-marks-grey', alt: 'Hail impact marks circled in chalk on a grey shingle roof' },
-      { path: '/storm-damage-roof-repair', tag: 'Storm', h: 'Storm and hail damage', p: 'Assessment, documentation for your carrier, and the repair once the scope is settled.', img: 'storm-tree-on-roof', alt: 'A fallen tree resting on a storm damaged residential roof' },
-      { path: '/metal-roofing', tag: 'Metal', h: 'Metal roofing', p: 'Standing seam, metal shingle and corrugated systems, detailed properly at every transition.', img: 'metal-standing-seam-cabin', alt: 'A black standing seam metal roof on a timber clad home' },
-      { path: '/specialty-roofing', tag: 'Specialty', h: 'Tile, slate and shake', p: 'Clay, concrete, composite, synthetic, natural slate and shake. The work we are known for.', img: 'real-tile-complete', alt: 'A completed clay tile roof on a stucco home' },
+      { path: '/roof-repair', h: 'Roof repair', p: 'Leaks, lifted or missing shingles, failed flashing and roof penetrations. We diagnose the cause before quoting.', img: 'repair-damaged-shingles', alt: 'Lifted and damaged asphalt shingles on a residential roof' },
+      { path: '/roof-replacement', h: 'Roof replacement', p: 'Complete tear off, decking inspected and reported honestly, then a full new system.', img: 'replace-aerial-decking', alt: 'Aerial view of a roof stripped to the decking during replacement' },
+      { path: '/roof-inspection', h: 'Roof inspection', p: 'Drone flown in three passes, then physical and attic investigation if needed. Report by email.', img: 'hail-chalk-marks-grey', alt: 'Hail impact marks circled in chalk on a grey shingle roof' },
+      { path: '/storm-damage-roof-repair', h: 'Storm and hail damage', p: 'Assessment, documentation for your carrier, and the repair once the scope is settled.', img: 'storm-tree-on-roof', alt: 'A fallen tree resting on a storm damaged residential roof' },
+      { path: '/metal-roofing', h: 'Metal roofing', p: 'Standing seam, metal shingle and corrugated systems, detailed properly at every transition.', img: 'metal-standing-seam-cabin', alt: 'A black standing seam metal roof on a timber clad home' },
+      { path: '/specialty-roofing', h: 'Tile, slate and shake', p: 'Clay, concrete, composite, synthetic, natural slate and shake. The work we are known for.', img: 'real-tile-complete', alt: 'A completed clay tile roof on a stucco home' },
     ],
   )}
 
