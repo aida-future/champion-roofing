@@ -107,7 +107,6 @@ export const NAV = [
     label: 'Residential',
     path: '/residential-roofing',
     hubLabel: 'All residential roofing',
-    allServices: true,
     note: 'Not sure what your roof needs? Book an assessment and we will tell you straight.',
     children: [
       { label: 'Roof repair', path: '/roof-repair', icon: 'wrench', blurb: 'Leaks, missing shingles, flashing and penetrations' },
@@ -124,7 +123,6 @@ export const NAV = [
     label: 'Commercial',
     path: '/commercial',
     hubLabel: 'All commercial roofing',
-    allServices: true,
     note: 'Property managers and general contractors: we coordinate around your tenants and trades.',
     children: [
       { label: 'TPO roofing', path: '/commercial/tpo-roofing', icon: 'flat', blurb: 'Our usual recommendation for low slope' },

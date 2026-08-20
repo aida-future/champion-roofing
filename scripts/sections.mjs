@@ -1042,14 +1042,6 @@ export function serviceShowcase(eb, title, blurb, items) {
         <figure class="csr-media">${img(s.img, s.alt, { sizes: '(max-width:900px) 86vw, 24vw' })}</figure>
         <span class="csr-go">${ICONS.arrow}</span>
       </a>`).join('')}
-      <a class="csr-card csr-more" href="/services">
-        <span class="csr-more-ghost" aria-hidden="true">All</span>
-        <span class="csr-more-body">
-          <span class="csr-title">View all services</span>
-          <span class="csr-desc">Residential, commercial and the exterior work that goes with a roof, in one place.</span>
-        </span>
-        <span class="csr-go">${ICONS.arrow}</span>
-      </a>
     </div>
     <div class="csr-ctl">
       <button class="rcar-btn" type="button" data-csrdir="-1" aria-label="Previous service">${ICONS.arrowLongL}</button>

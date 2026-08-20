@@ -303,10 +303,7 @@ function navList() {
         </div>
         <div class="mega-note">
           <span>${n.note}</span>
-          <span class="mega-links">
-            ${n.allServices ? `<a class="link-ridge" href="/services">View all services${ICONS.arrow}</a>` : ''}
-            <a class="link-ridge" href="${n.path}">${n.hubLabel || 'All ' + n.label.toLowerCase()}${ICONS.arrow}</a>
-          </span>
+          <a class="link-ridge" href="${n.path}">${n.hubLabel || 'All ' + n.label.toLowerCase()}${ICONS.arrow}</a>
         </div>
       </div>
     </li>`;
@@ -318,7 +315,6 @@ function drawerList() {
   NAV.forEach((n) => {
     out.push(`<a href="${n.path || (n.children && n.children[0].path)}">${n.label}</a>`);
     if (n.children) n.children.forEach((c) => out.push(`<a class="sub" href="${c.path}">${c.label}</a>`));
-    if (n.allServices) out.push(`<a class="sub" href="/services">View all services</a>`);
   });
   return out.join('');
 }

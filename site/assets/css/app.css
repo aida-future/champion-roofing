@@ -539,7 +539,6 @@ p { text-wrap: pretty; }
   color: var(--body-dim);
 }
 
-.mega-links { display: flex; align-items: center; gap: .6rem 1.6rem; flex-wrap: wrap; }
 
 .head-cta { display: flex; align-items: center; gap: .9rem; flex: none; }
 .head-phone {
@@ -2183,13 +2182,6 @@ p { text-wrap: pretty; }
 .csr-overlay { position: relative; z-index: 2; margin-top: auto; padding: 1.4rem; display: block; }
 .csr-feature .csr-title { color: #fff; font-size: 1.35rem; }
 .csr-feature .csr-desc { color: rgba(255,255,255,.8); }
-.csr-more { background: var(--red); border: 0; justify-content: flex-end; }
-.csr-more-ghost { position: absolute; top: -2.2rem; right: -1rem; font-family: var(--font-display); font-weight: 800; font-stretch: 112%; font-size: 10rem; line-height: 1; letter-spacing: -.04em; color: rgba(255,255,255,.09); pointer-events: none; }
-.csr-more-body { display: block; margin-top: auto; padding: 1.4rem 4rem 1.4rem 1.4rem; position: relative; z-index: 1; }
-.csr-more .csr-title { color: #fff; font-size: 1.35rem; }
-.csr-more .csr-desc { color: rgba(255,255,255,.85); }
-.csr-more .csr-go { background: #fff; color: var(--red); }
-.csr-more:hover .csr-go { background: var(--ink); color: #fff; }
 .csr-ctl { display: flex; align-items: center; gap: 1.2rem; margin-top: 1rem; }
 .csr-track { flex: 1; position: relative; height: 2px; margin-left: .8rem; background: var(--line-2); border-radius: 2px; overflow: hidden; }
 .csr-track i { position: absolute; top: 0; bottom: 0; left: 0; background: var(--red); border-radius: 2px; transition: transform .25s var(--ease-out); will-change: transform; }
