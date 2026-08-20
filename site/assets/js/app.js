@@ -595,6 +595,63 @@
     });
   }
 
+  /* ---------- Local Howl credit: a real howl on hover ----------
+     Synthesised with WebAudio so no audio file ships: a fundamental and a
+     quiet octave glide up, hold with vibrato, and fall away through a lowpass.
+     Browsers keep audio suspended until the visitor has interacted with the
+     page at least once; if it cannot play, it stays silent rather than erroring. */
+  var howlLink = $('.howl');
+  if (howlLink && window.AudioContext) {
+    var howlCtx = null;
+    var howling = false;
+    var howl = function () {
+      if (howling) return;
+      if (!howlCtx) howlCtx = new AudioContext();
+      if (howlCtx.state === 'suspended') {
+        howlCtx.resume().catch(function () {});
+        if (howlCtx.state === 'suspended') return;
+      }
+      howling = true;
+      var t = howlCtx.currentTime;
+      var out = howlCtx.createGain();
+      out.gain.value = 0;
+      var lp = howlCtx.createBiquadFilter();
+      lp.type = 'lowpass';
+      lp.frequency.value = 1100;
+      out.connect(lp); lp.connect(howlCtx.destination);
+
+      // Vibrato shared by both voices.
+      var vib = howlCtx.createOscillator();
+      var vibGain = howlCtx.createGain();
+      vib.frequency.value = 5.2;
+      vibGain.gain.value = 11;
+      vib.connect(vibGain);
+
+      [ [1, 0.10], [2, 0.028] ].forEach(function (pair) {
+        var o = howlCtx.createOscillator();
+        var g = howlCtx.createGain();
+        o.type = 'sine';
+        g.gain.value = pair[1];
+        // The howl contour: rise, hold, fall.
+        o.frequency.setValueAtTime(255 * pair[0], t);
+        o.frequency.exponentialRampToValueAtTime(540 * pair[0], t + 0.38);
+        o.frequency.setValueAtTime(540 * pair[0], t + 0.85);
+        o.frequency.exponentialRampToValueAtTime(320 * pair[0], t + 1.35);
+        vibGain.connect(o.frequency);
+        o.connect(g); g.connect(out);
+        o.start(t); o.stop(t + 1.5);
+      });
+      vib.start(t); vib.stop(t + 1.5);
+
+      out.gain.linearRampToValueAtTime(0.9, t + 0.22);
+      out.gain.setValueAtTime(0.9, t + 0.95);
+      out.gain.linearRampToValueAtTime(0, t + 1.45);
+      setTimeout(function () { howling = false; }, 1600);
+    };
+    howlLink.addEventListener('mouseenter', howl);
+    howlLink.addEventListener('focus', howl);
+  }
+
   /* ---------- Current year ---------- */
   $$('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
 })();

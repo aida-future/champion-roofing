@@ -1858,7 +1858,7 @@ p { text-wrap: pretty; }
 .phero .btn-row { margin-top: 2rem; }
 
 /* ---------- Footer ---------- */
-.site-foot { background: var(--ink); color: rgba(255, 255, 255, .6); padding-block: clamp(3rem, 2rem + 3vw, 5rem) 0; position: relative; overflow: hidden; }
+.site-foot { background: var(--ink); color: rgba(255, 255, 255, .6); padding-block: clamp(3rem, 2rem + 3vw, 5rem) clamp(2.2rem, 1.6rem + 2vw, 3.5rem); position: relative; overflow: hidden; }
 .foot-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: clamp(1.6rem, 1rem + 2.4vw, 3.4rem); }
 .foot-brand img { width: 205px; background: #fff; padding: .7rem .9rem; border-radius: var(--r); }
 .foot-brand p { font-size: .93rem; margin-top: 1.2rem; max-width: 38ch; }
@@ -2118,6 +2118,8 @@ p { text-wrap: pretty; }
 .howl:hover .howl-w2 { animation: howlPulse 1.6s var(--ease) .35s infinite; }
 .howl:hover .howl-tag { max-width: 200px; opacity: 1; }
 @keyframes howlPulse { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
+
+@media (max-width: 760px) { .site-foot { padding-bottom: calc(2.2rem + 76px); } }
 
 /* ---------- Motion preferences ---------- */
 @media (prefers-reduced-motion: reduce) {
