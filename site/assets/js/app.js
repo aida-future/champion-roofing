@@ -595,6 +595,22 @@
     });
   }
 
+  /* ---------- Expanding service row ---------- */
+  $$('[data-xrow]').forEach(function (row) {
+    var cards = $$('[data-xcard]', row);
+    function open(n) {
+      cards.forEach(function (c, i) { c.classList.toggle('is-open', i === n); });
+    }
+    cards.forEach(function (card, n) {
+      if (finePointer) {
+        card.addEventListener('mouseenter', function () { open(n); });
+      }
+      card.addEventListener('focus', function () { open(n); });
+      // Touch without fine pointer: cards are stacked and fully expanded via
+      // CSS, so a tap simply follows the link. No interception needed.
+    });
+  });
+
   /* ---------- Current year ---------- */
   $$('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
 })();

@@ -1005,3 +1005,29 @@ export function errorPage(code, h1, lede, links) {
   </div>
 </section>`;
 }
+
+/* ---------- Expanding service row ----------
+   All services visible in one row. The active card grows and shows its full
+   photograph with the copy overlaid; the others compress to slim photo cards.
+   Hover or focus moves the focus; on touch everything stacks expanded. All
+   text is always in the DOM, so crawlers read every description. */
+export function serviceShowcase(eb, title, blurb, items) {
+  return `
+<section class="sec">
+  <span class="ghost" aria-hidden="true">Services</span>
+  <div class="wrap">
+    ${secHead(eb, title, blurb)}
+    <div class="xrow" data-xrow>
+      ${items.map((s, i) => `<a class="xcard${i === 0 ? ' is-open' : ''}" href="${s.path}" data-xcard>
+        <figure class="xcard-media">${img(s.img, s.alt, { sizes: '(max-width:900px) 100vw, 40vw' })}</figure>
+        <span class="xcard-tag">${s.tag}</span>
+        <span class="xcard-body">
+          <span class="xcard-title">${s.h}</span>
+          <span class="xcard-desc">${s.p}</span>
+          <span class="xcard-go">${ICONS.arrowLong}</span>
+        </span>
+      </a>`).join('')}
+    </div>
+  </div>
+</section>`;
+}

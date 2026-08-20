@@ -84,6 +84,7 @@ export const FOCAL = {
   'specialty-clay-tile-home': '50% 30%',
   'real-tile-during': '50% 35%',
   'real-roofer-ladder-chimney': '55% 30%',
+  'comm-retail-aerial': '50% 45%',
 };
 export const focal = (slug) => FOCAL[slug] || FOCAL.default;
 

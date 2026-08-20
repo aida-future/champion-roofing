@@ -3,7 +3,7 @@ import { ICONS, btn, img, eyebrow, secHead, checks } from '../lib.mjs';
 import {
   hero, leadForm, ticker, statStrip, steps, droneSection, materialExplorer,
   compareSection, reviewSection, pullQuote, areasSection, ctaBand, faqSection,
-  serviceGrid, split,
+  serviceGrid, serviceShowcase, split,
 } from '../sections.mjs';
 
 const FAQS = [
@@ -57,7 +57,7 @@ const SERVICES = [
   {
     path: '/commercial', tag: 'Commercial', h: 'Commercial roofing',
     p: 'Low slope membranes, coatings and steep slope systems for offices, retail, industrial and multifamily buildings.',
-    img: 'real-commercial-drone-office', alt: 'Drone photograph of a commercial office building re-roofed by Champion Roofing',
+    img: 'comm-retail-aerial', alt: 'Aerial view of a commercial retail building with a low slope roof',
   },
   {
     path: '/gutters', tag: 'Gutters', h: 'Seamless gutters',
@@ -143,7 +143,7 @@ ${split({
     floatCard: { icon: 'award', title: 'DaVinci Project of the Year', sub: 'Won in 2021 and again in 2023' },
   })}
 
-${serviceGrid(
+${serviceShowcase(
     'What we do',
     'Roofing services across the Oklahoma City metro',
     'Residential, commercial and specialty roofing, plus the gutter work our customers keep bringing up in reviews.',
