@@ -539,6 +539,8 @@ p { text-wrap: pretty; }
   color: var(--body-dim);
 }
 
+.mega-links { display: flex; align-items: center; gap: .6rem 1.6rem; flex-wrap: wrap; }
+
 .head-cta { display: flex; align-items: center; gap: .9rem; flex: none; }
 .head-phone {
   display: flex;
