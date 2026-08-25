@@ -2049,10 +2049,19 @@ p { text-wrap: pretty; }
 .foot-col ul { gap: .15rem; }
 .rcar-btn { min-height: 44px; min-width: 60px; padding-block: 8px; }
 .hero-arrow { min-height: 44px; padding-block: 8px; }
-.crumbs a { padding-block: .75rem; display: inline-block; }
+.crumbs a { padding: .75rem .4rem; margin-inline: -.25rem; display: inline-block; }
 .review-more { min-height: 44px; padding-block: .6rem; margin-top: -.6rem; }
 
-@media (max-width: 640px) { .hero-badge { font-size: .8rem; } .review-tag { font-size: .74rem; } }
+@media (max-width: 640px) { .hero-badge { font-size: .82rem; } }
+
+/* Mobile readability: functional text never drops under 13px. Decorative
+   micro-labels (eyebrows, the howl tagline) are exempt on purpose. */
+@media (max-width: 640px) {
+  .field label, .field .err, .form-foot small, .review-tag, .review-more,
+  .compare-label, .trust-pill, .foot-legal, .callbar .btn, .btn-sm,
+  .topbar, .howl-txt, .card-tag { font-size: .8175rem; }
+  .eyebrow, .stat > span { font-size: .8175rem; }
+}
 
 
 /* Mobile: the top bar collapses to one line (address only, status pill on the
@@ -2125,7 +2134,7 @@ p { text-wrap: pretty; }
 
 /* ---------- Core services row ---------- */
 .csr-head { display: grid; grid-template-columns: auto 1fr; gap: 2rem clamp(2rem, 4vw, 6rem); align-items: start; margin-bottom: clamp(1.8rem, 1.2rem + 2vw, 3rem); }
-.csr-head-right { max-width: 584px; width: fit-content; justify-self: end; }
+.csr-head-right { max-width: 36.5rem; width: fit-content; justify-self: end; }
 .csr-head-right h2 { font-size: clamp(1.9rem, 1.4rem + 2.1vw, 3.3rem); letter-spacing: -.024em; line-height: 1.05; }
 .csr-head-right h2 em { font-style: normal; color: var(--red); }
 .csr-head-right p { color: var(--body-dim); margin-top: .8rem; max-width: 52ch; }
@@ -2211,6 +2220,23 @@ p { text-wrap: pretty; }
 .no-js .hero-slide:first-child { opacity: 1; }
 .no-js .explorer-panel:first-of-type { display: grid; }
 .no-js .drawer, .no-js .scrim { display: none; }
+
+/* ---------- Large screens ----------
+   The whole type scale and rhythm system is rem-based, so scaling the root
+   font size lifts every clamp cap, gap and heading together. The containers
+   widen with it so the content column keeps its proportion of the viewport. */
+@media (min-width: 1920px) {
+  html { font-size: 17px; }
+  :root { --max: 1520px; --max-wide: 1800px; }
+  .csr-row { grid-auto-columns: clamp(300px, 19vw, 400px); }
+  .csr-card { min-height: 460px; }
+}
+@media (min-width: 2400px) {
+  html { font-size: 18.5px; }
+  :root { --max: 1700px; --max-wide: 2020px; }
+  .csr-row { grid-auto-columns: clamp(340px, 17vw, 460px); }
+  .csr-card { min-height: 500px; }
+}
 
 /* Print */
 @media print {
