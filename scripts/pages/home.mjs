@@ -137,10 +137,10 @@ ${split({
       ['DaVinci Masterpiece Contractor.', 'Project of the Year winner in 2021 and again in 2023.'],
       ['BBB accredited, A plus rated.', `Oklahoma roofing registration ${BIZ.license}.`],
     ],
-    image: 'crew-two-roofers',
-    alt: 'Two roofers hand nailing architectural shingles on a residential roof',
+    image: 'real-commercial-drone-office',
+    alt: 'Aerial drone view of the TVC Pro-Driver office building in Oklahoma City with a new roof by Champion Roofing',
     cta: btn('/about', 'More about Champion Roofing', 'btn-dark'),
-    floatCard: { icon: 'award', title: 'DaVinci Project of the Year', sub: 'Won in 2021 and again in 2023' },
+    floatCard: { icon: 'award', title: 'Since 2004', sub: 'Locally owned by Mike Cowan' },
   })}
 
 ${serviceShowcase(
