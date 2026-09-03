@@ -137,8 +137,8 @@ ${split({
       ['DaVinci Masterpiece Contractor.', 'Project of the Year winner in 2021 and again in 2023.'],
       ['BBB accredited, A plus rated.', `Oklahoma roofing registration ${BIZ.license}.`],
     ],
-    image: 'real-roofer-ladder-chimney',
-    alt: 'A Champion Roofing crew member on a ladder at the chimney of an Oklahoma City home',
+    image: 'crew-two-roofers',
+    alt: 'Two roofers hand nailing architectural shingles on a residential roof',
     cta: btn('/about', 'More about Champion Roofing', 'btn-dark'),
     floatCard: { icon: 'award', title: 'DaVinci Project of the Year', sub: 'Won in 2021 and again in 2023' },
   })}
