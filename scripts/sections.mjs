@@ -464,35 +464,31 @@ export function pageReviews(path, heading, { tone = 'tint' } = {}) {
 export function pullQuote(quote, cite) {
   return `
 <section class="sec sec-dark quote-band">
-  <!-- A folded roof plane in perspective, lit from the left. Built from stacked
-       gradients rather than a photograph so the words stay the subject. -->
-  <div class="quote-bg" aria-hidden="true">
-    <svg width="100%" height="100%" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1200 620">
+  <!-- A house drawn in line behind the words. It draws itself once the
+       quote scrolls into view; the words stay the subject. -->
+  <div class="quote-bg" aria-hidden="true" data-draw>
+    <svg class="quote-draw" viewBox="0 0 1200 560" preserveAspectRatio="xMidYMid meet">
       <defs>
-        <linearGradient id="qFaceL" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stop-color="#3a1113"/><stop offset="1" stop-color="#160c0d"/>
-        </linearGradient>
-        <linearGradient id="qFaceR" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stop-color="#120a0b"/><stop offset="1" stop-color="#2a1012"/>
-        </linearGradient>
-        <linearGradient id="qEdge" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stop-color="rgba(226,36,37,.85)"/>
-          <stop offset="1" stop-color="rgba(226,36,37,0)"/>
-        </linearGradient>
-        <radialGradient id="qGlow" cx="26%" cy="16%" r="78%">
-          <stop offset="0" stop-color="rgba(240,96,95,.28)"/>
+        <radialGradient id="qGlow" cx="50%" cy="22%" r="70%">
+          <stop offset="0" stop-color="rgba(240,96,95,.22)"/>
           <stop offset="1" stop-color="rgba(240,96,95,0)"/>
         </radialGradient>
       </defs>
-      <!-- The fold sits in the lower third so nothing crosses the quote. -->
-      <g class="qslab">
-        <path d="M-60 900 600 430 600 560 -60 1030Z" fill="url(#qFaceL)"/>
-        <path d="M1260 900 600 430 600 560 1260 1030Z" fill="url(#qFaceR)"/>
-        <path d="M-60 900 600 430 1260 900" fill="none" stroke="url(#qEdge)" stroke-width="2.5"/>
-        <path d="M-60 1010 600 540 1260 1010" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1.5"/>
-        <path d="M-60 1120 600 650 1260 1120" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="1.5"/>
-      </g>
-      <rect width="1200" height="620" fill="url(#qGlow)"/>
+      <rect width="1200" height="560" fill="url(#qGlow)"/>
+      <path class="d-fine" data-d="ground" pathLength="1" vector-effect="non-scaling-stroke" d="M100 520H1100"/>
+      <path class="d-roof" data-d="roof" pathLength="1" vector-effect="non-scaling-stroke" d="M160 396 600 140 1040 396"/>
+      <path class="d-line" data-d="eave" pathLength="1" vector-effect="non-scaling-stroke" d="M160 396H1040"/>
+      <path class="d-line" data-d="wall-l" pathLength="1" vector-effect="non-scaling-stroke" d="M210 396V520"/>
+      <path class="d-line" data-d="wall-r" pathLength="1" vector-effect="non-scaling-stroke" d="M990 396V520"/>
+      <path class="d-line" data-d="chimney" pathLength="1" vector-effect="non-scaling-stroke" d="M760 233V172H810V262"/>
+      <path class="d-line" data-d="dormer" pathLength="1" vector-effect="non-scaling-stroke" d="M750 172H820M750 162H820V172M750 172V162"/>
+      <path class="d-line" data-d="gable" pathLength="1" vector-effect="non-scaling-stroke" d="M583 190a17 17 0 1 0 34 0a17 17 0 1 0-34 0"/>
+      <path class="d-line" data-d="door" pathLength="1" vector-effect="non-scaling-stroke" d="M560 520V432H640V520"/>
+      <path class="d-fine" data-d="win-l" pathLength="1" vector-effect="non-scaling-stroke" d="M300 490V420H400V490ZM350 420V490M300 448H400"/>
+      <path class="d-fine" data-d="win-r" pathLength="1" vector-effect="non-scaling-stroke" d="M800 490V420H900V490ZM850 420V490M800 448H900"/>
+      <path class="d-fine" data-d="course-1" pathLength="1" vector-effect="non-scaling-stroke" d="M454 225H746"/>
+      <path class="d-fine" data-d="course-2" pathLength="1" vector-effect="non-scaling-stroke" d="M360 280H840"/>
+      <path class="d-fine" data-d="course-3" pathLength="1" vector-effect="non-scaling-stroke" d="M265 335H935"/>
     </svg>
   </div>
   <div class="wrap">

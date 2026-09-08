@@ -1730,15 +1730,33 @@ body.has-hero .site-head:not(.is-stuck) .brand-light { opacity: 1; }
 /* Quote band: a drawn ridge-pattern ground rather than a photograph, so the
    words carry the section on their own. */
 .quote-band { background: radial-gradient(120% 90% at 22% 0%, #241012 0%, var(--ink) 52%, #0c0708 100%); overflow: hidden; }
-/* Slow parallax drift gives the folded plane a sense of depth without moving
-   any photograph, which the client does not want. */
-.quote-band .qslab { transform-origin: 50% 30%; animation: qdrift 26s var(--ease) infinite alternate; }
-@keyframes qdrift {
-  from { transform: translate3d(0, 0, 0) scale(1); }
-  to { transform: translate3d(0, -14px, 0) scale(1.035); }
-}
 .quote-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
 .quote-bg svg { width: 100%; height: 100%; display: block; }
+/* The drawn house. Each stroke is a dash the length of its own path, held at
+   zero until the quote is in view, then pulled back: the roofline signs first
+   in red, the elevation sketches in behind it. */
+.quote-draw { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.quote-draw path { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.quote-bg.is-drawn .quote-draw path { animation: qdraw 1.5s cubic-bezier(.45, .05, .55, .95) forwards; }
+.quote-draw .d-roof { stroke: var(--red); stroke-width: 2.6; opacity: .62; }
+.quote-bg.is-drawn .quote-draw .d-roof { animation-duration: 2s; }
+.quote-draw .d-line { stroke: rgba(255, 255, 255, .2); stroke-width: 1.5; }
+.quote-draw .d-fine { stroke: rgba(255, 255, 255, .11); stroke-width: 1.2; }
+.quote-draw [data-d="ground"] { animation-delay: 0s; }
+.quote-draw [data-d="roof"] { animation-delay: .15s; }
+.quote-draw [data-d="eave"] { animation-delay: .9s; }
+.quote-draw [data-d="wall-l"], .quote-draw [data-d="wall-r"] { animation-delay: 1.15s; }
+.quote-draw [data-d="chimney"] { animation-delay: 1.4s; }
+.quote-draw [data-d="gable"] { animation-delay: 1.5s; }
+.quote-draw [data-d="dormer"] { animation-delay: 1.9s; }
+.quote-draw [data-d="door"] { animation-delay: 1.8s; }
+.quote-draw [data-d="win-l"], .quote-draw [data-d="win-r"] { animation-delay: 2.05s; }
+.quote-draw [data-d="course-1"] { animation-delay: 2.3s; }
+.quote-draw [data-d="course-2"] { animation-delay: 2.45s; }
+.quote-draw [data-d="course-3"] { animation-delay: 2.6s; }
+@keyframes qdraw { to { stroke-dashoffset: 0; } }
+.quote-draw { transform: scale(1.15); transform-origin: 50% 60%; }
+@media (max-width: 640px) { .quote-draw { transform: scale(1.35); transform-origin: 50% 58%; } }
 .quote-band > .wrap { position: relative; z-index: 2; }
 .quote-mark { display: block; width: 46px; margin: 0 auto clamp(1.1rem, .8rem + 1vw, 1.8rem); color: var(--red); }
 .quote-mark svg { width: 100%; height: auto; }
@@ -2266,11 +2284,13 @@ body.has-hero .site-head:not(.is-stuck) .brand-light { opacity: 1; }
     scroll-behavior: auto !important;
   }
   [data-reveal] { opacity: 1; transform: none; }
+  .quote-draw path { animation: none !important; stroke-dashoffset: 0; }
   .ticker-track, .marquee-track { animation: none; }
 }
 
 /* No-JS fallback: nothing may ever render invisible or unstyled */
 .no-js [data-reveal] { opacity: 1; transform: none; }
+.no-js .quote-draw path { stroke-dashoffset: 0; }
 .no-js .hero-slide:first-child { opacity: 1; }
 .no-js .explorer-panel:first-of-type { display: grid; }
 .no-js .drawer, .no-js .scrim { display: none; }

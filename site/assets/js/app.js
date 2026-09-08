@@ -238,6 +238,23 @@
     });
   }
 
+  /* ---------- Line drawings: draw once the band is properly in view ---------- */
+  var drawings = $$('[data-draw]');
+  if (drawings.length) {
+    if (reduced || !('IntersectionObserver' in window)) {
+      drawings.forEach(function (el) { el.classList.add('is-drawn'); });
+    } else {
+      var dio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          e.target.classList.add('is-drawn');
+          dio.unobserve(e.target);
+        });
+      }, { threshold: 0.35 });
+      drawings.forEach(function (el) { dio.observe(el); });
+    }
+  }
+
   /* ---------- Count-up stats ---------- */
   var counters = $$('[data-count]');
   if (counters.length) {
