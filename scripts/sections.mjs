@@ -59,6 +59,9 @@ export function leadForm({ docked = true, title, blurb, compact = false } = {}) 
         <input type="hidden" name="_subject" value="New roof assessment request, championroofingok.com">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="${BIZ.url}/thank-you">
+        <input type="hidden" name="_replyto" value="">
+        <input type="hidden" name="_autoresponse" value="Thanks, we have your roof assessment request. Someone from the Champion Roofing office will call you during business hours, Monday to Friday 9am to 5pm, to set a time. If it is urgent, call (405) 841-7663.">
         <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
         <!-- Three columns. Who you are first, then what you need, so the form
              reads in the order a person would actually say it out loud. -->
@@ -1002,6 +1005,33 @@ export function errorPage(code, h1, lede, links) {
       </a>`).join('')}
     </div>
     <p class="errpage-foot">Or call the office on <a href="tel:${BIZ.phoneRaw}">${BIZ.phone}</a> and someone will point you the right way.</p>
+  </div>
+</section>`;
+}
+
+/* ---------- Confirmation page ----------
+   Where the lead form lands after FormSubmit accepts it. Same bones as the
+   error page so it reads as part of the site, not a third party receipt. */
+export function confirmPage(h1, lede, links) {
+  return `
+<section class="errpage">
+  <span class="errpage-ghost" aria-hidden="true">OK</span>
+  <svg class="errpage-ridge" viewBox="0 0 1200 220" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 220 600 30 1200 220" fill="none" stroke="rgba(226,36,37,.6)" stroke-width="2"/>
+    <path d="M0 260 600 70 1200 260" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1.5"/>
+  </svg>
+  <div class="wrap errpage-inner">
+    <span class="errpage-code">${icon('check')} Request received</span>
+    <h1>${h1}</h1>
+    <p class="errpage-lede">${lede}</p>
+    <div class="errpage-links">
+      ${links.map((l) => `<a class="errpage-link" href="${l.path}">
+        <span class="ridge-chip">${icon(l.icon)}</span>
+        <span class="errpage-link-txt"><b>${l.h}</b><span>${l.p}</span></span>
+        ${ICONS.arrow}
+      </a>`).join('')}
+    </div>
+    <p class="errpage-foot">Need it sooner? Call the office on <a href="tel:${BIZ.phoneRaw}">${BIZ.phone}</a>, Monday to Friday, 9am to 5pm.</p>
   </div>
 </section>`;
 }

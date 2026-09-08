@@ -4,7 +4,7 @@ import {
   manifesto,
   pageHero, leadForm, statStrip, steps, faqSection, split, infoGrid,
   proseSection, related, asideCard, ctaBand, ticker, mosaic, areasSection,
-  pullQuote, honestBlock, errorPage,
+  pullQuote, honestBlock, errorPage, confirmPage,
 } from '../sections.mjs';
 
 const CITIES = BIZ.cities.map((c) => c.name).join(', ').replace(/, ([^,]*)$/, ' and $1');
@@ -823,4 +823,22 @@ ${errorPage("410", "This article has been removed", "The solar roofing article t
 `,
 };
 
-export default [about, ourWork, serviceAreas, faq, contact, privacy, smsPrivacy, smsTerms, subscribe, notFound, gone];
+/* ========================================================================== */
+// FormSubmit redirects here after a successful lead form post. Kept out of the
+// sitemap and noindexed: it only makes sense as the step after the form.
+const thankYou = {
+  path: '/thank-you',
+  noindex: true,
+  title: 'Request received | Champion Roofing',
+  desc: 'Your free roof assessment request has reached the Champion Roofing office.',
+  body: `
+${confirmPage('Got it. The office will call you back.', 'Your request is on its way to the office. Someone will call you during business hours to set a time for the assessment, talk through what you are seeing, and answer anything you want to know before we come out.', [
+    { path: '/our-work', icon: 'award', h: 'Our work', p: 'Roofs we have put on around the metro while you wait.' },
+    { path: '/reviews', icon: 'star', h: 'Reviews', p: 'What the last few dozen customers said afterwards.' },
+    { path: '/roof-inspection', icon: 'drone', h: 'How the assessment works', p: 'Three drone laps, then a written report by email.' },
+    { path: '/', icon: 'house', h: 'Home', p: 'Back to the start.' },
+  ])}
+`,
+};
+
+export default [about, ourWork, serviceAreas, faq, contact, privacy, smsPrivacy, smsTerms, subscribe, notFound, gone, thankYou];

@@ -449,6 +449,11 @@
         if (bad) { bad.focus(); bad.scrollIntoView({ block: 'center', behavior: reduced ? 'auto' : 'smooth' }); }
         return;
       }
+      var next = form.querySelector('input[name="_next"]');
+      if (next) next.value = location.origin + '/thank-you';
+      var em = form.querySelector('input[name="Email"]');
+      var rt = form.querySelector('input[name="_replyto"]');
+      if (em && rt) rt.value = em.value;
       var btn = form.querySelector('button[type="submit"]');
       if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
     });

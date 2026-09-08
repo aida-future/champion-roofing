@@ -600,7 +600,10 @@ currently unranked. Removing their homepage links would remove the strongest pus
    it into `ITEMS` in `scripts/reviews.mjs` with tags, and every review surface fills in
    automatically: the homepage, `/reviews` with working filters, and the tagged service pages.
 9. **Form delivery**: wired to FormSubmit at `info@championroofingok.com`. The first
-   submission triggers a one time activation email to that address. Swap for a CRM if preferred.
+   submission triggers a one time activation email to that address; someone with access to
+   that inbox must click it once or nothing is delivered. After a successful post the visitor
+   lands on /thank-you (noindexed), the lead email carries the visitor's address as reply-to,
+   and the visitor gets a short auto acknowledgement. Swap for a CRM if preferred.
 10. **City page depth.** The nine city pages are honest and structurally varied, but the thing
    that would make them genuinely strong is real local proof: a project photo, a neighbourhood
    name, or a job reference per city. Worth asking Mike for a few per area.
