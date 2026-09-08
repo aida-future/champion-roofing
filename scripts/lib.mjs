@@ -327,7 +327,8 @@ ${topbar()}
 <header class="site-head">
   <div class="wrap-wide head-inner">
     <a class="brand" href="/" aria-label="${BIZ.name}, home">
-      <img src="/assets/img/champion-logo.png" width="190" height="83" alt="${BIZ.name}">
+      <img class="brand-mark" src="/assets/img/champion-logo.png" width="190" height="83" alt="${BIZ.name}">
+      <img class="brand-mark brand-light" src="/assets/img/champion-logo-light.png" width="190" height="83" alt="" aria-hidden="true">
     </a>
     <nav aria-label="Primary">
       <ul class="nav">${navList()}</ul>
@@ -428,6 +429,11 @@ export function layout(page, body) {
   // an external link. STAGING=false at cutover lifts both in one switch.
   const STAGING = process.env.STAGING !== 'false';
   const robots = (page.noindex || STAGING) ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1';
+  // Pages that open on a dark hero get the transparent overlay header. The
+  // first section in the body is the whole test: hero, phero and errpage are
+  // all dark, everything else would leave white nav links on a pale ground.
+  const firstSection = body.match(/<section class="([\w-]+)/);
+  const darkOpen = firstSection ? ['hero', 'phero', 'errpage'].includes(firstSection[1]) : false;
 
   return `<!doctype html>
 <html lang="en" class="no-js">
@@ -461,7 +467,7 @@ export function layout(page, body) {
 <link rel="stylesheet" href="/assets/css/app.css?v=${CSS_V}">
 <script type="application/ld+json">${JSON.stringify(pageSchema(page))}</script>
 </head>
-<body>
+<body${darkOpen ? ' class="has-hero"' : ''}>
 ${header()}
 <main id="main">
 ${body}
