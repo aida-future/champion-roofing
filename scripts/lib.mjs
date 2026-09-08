@@ -293,7 +293,7 @@ function navList() {
       return `<li><a href="${n.path}">${n.label}</a></li>`;
     }
     return `<li>
-      <button type="button" aria-expanded="false">${n.label}<span class="caret">${ICONS.chevron}</span></button>
+      <a href="${n.path}" aria-haspopup="true" aria-expanded="false">${n.label}<span class="caret">${ICONS.chevron}</span></a>
       <div class="mega">
         <div class="mega-grid">
           ${n.children.map((c) => `<a class="mega-item" href="${c.path}">

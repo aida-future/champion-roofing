@@ -68,7 +68,7 @@
   $$('.nav > li').forEach(function (li) {
     var mega = $('.mega', li);
     if (!mega) return;
-    var btn = $('button', li);
+    var btn = li.firstElementChild;
     var closeTimer;
 
     // Keep the panel inside the viewport: it is anchored to the left of its
@@ -102,10 +102,15 @@
         closeTimer = setTimeout(shut, 160);
       });
     }
-    if (btn) {
+    // Keyboard: the panel follows focus into and out of the item.
+    li.addEventListener('focusin', function () { open(); });
+    li.addEventListener('focusout', function (e) {
+      if (!li.contains(e.relatedTarget)) shut();
+    });
+    // Touch: the first tap opens the panel, a second tap follows the link.
+    if (btn && !finePointer) {
       btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        if (li.classList.contains('is-open')) shut(); else open();
+        if (!li.classList.contains('is-open')) { e.preventDefault(); open(); }
       });
     }
   });
@@ -113,7 +118,7 @@
     if (!e.target.closest('.nav')) {
       $$('.nav > li.is-open').forEach(function (li) {
         li.classList.remove('is-open');
-        var b = $('button', li);
+        var b = li.firstElementChild;
         if (b) b.setAttribute('aria-expanded', 'false');
       });
     }

@@ -526,7 +526,7 @@ body.has-hero .site-head:not(.is-stuck) .brand-light { opacity: 1; }
   transform-origin: left;
   transition: transform .35s var(--ease-out);
 }
-.nav > li > a:hover::after, .nav > li:hover > button::after, .nav > li > a[aria-current="page"]::after { transform: scaleX(1); }
+.nav > li > a:hover::after, .nav > li:hover > a::after, .nav > li.is-open > a::after, .nav > li:hover > button::after, .nav > li > a[aria-current="page"]::after { transform: scaleX(1); }
 .nav .caret { width: 11px; height: 11px; transition: transform .3s; }
 .nav > li:hover .caret { transform: rotate(180deg); }
 
