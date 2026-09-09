@@ -4,7 +4,7 @@ import {
   manifesto,
   pageHero, leadForm, statStrip, steps, faqSection, split, infoGrid,
   proseSection, related, asideCard, ctaBand, ticker, mosaic, areasSection,
-  pullQuote, honestBlock, errorPage, confirmPage,
+  pullQuote, honestBlock, errorPage, confirmPage, certGrid,
 } from '../sections.mjs';
 
 const CITIES = BIZ.cities.map((c) => c.name).join(', ').replace(/, ([^,]*)$/, ' and $1');
@@ -28,7 +28,7 @@ const about = {
     },
     {
       q: 'What certifications does Champion Roofing hold?',
-      a: 'GAF Master Elite residential roofing contractor, GAF Certified commercial contractor, GAF CoatingsPro liquid applied roofing contractor, GAF listed FORTIFIED Roof contractor, and DaVinci Masterpiece contractor.\n\nChampion Roofing is also a BBB accredited business with an A plus rating.',
+      a: 'GAF Master Elite residential roofing contractor, GAF Certified commercial contractor, GAF CoatingsPro liquid applied roofing contractor, GAF listed FORTIFIED Roof contractor, and DaVinci Masterpiece contractor. We are a certified Brava contractor, and certified with Malarkey, Owens Corning and CertainTeed, which is what lets us register their higher tier warranties for you.\n\nChampion Roofing is also a BBB accredited business with an A plus rating.',
     },
     {
       q: 'Has Champion Roofing won any awards?',
@@ -61,8 +61,8 @@ ${split({
       [`Oklahoma registration ${BIZ.license}.`, 'Held by Champion Roofing LLC.'],
       ['7608 N Council Rd.', 'A real address in northwest Oklahoma City.'],
     ],
-    image: 'real-roofer-ladder-chimney',
-    alt: 'A Champion Roofing crew member working from a ladder at a chimney',
+    image: 'real-ranch-new-roof',
+    alt: 'A single storey ranch home in Oklahoma City with a new shingle roof by Champion Roofing',
     reverse: true,
   })}
 
@@ -78,14 +78,39 @@ ${statStrip([
     { count: 5, label: 'GAF and DaVinci certifications' },
   ])}
 
-${infoGrid('Credentials', 'What Champion Roofing is certified to do', 'Certifications matter mostly because of what they unlock: the higher tier manufacturer warranties that a non certified roofer cannot offer you.', [
-    { icon: 'award', h: 'GAF Master Elite', p: 'The residential certification held by a small proportion of American roofing contractors. It is what allows us to offer upgraded GAF manufacturer warranties.' },
-    { icon: 'building', h: 'GAF Certified Commercial', p: 'The commercial equivalent, covering low slope and commercial roofing systems.' },
-    { icon: 'shield', h: 'GAF CoatingsPro', p: 'Liquid applied roofing systems, used to restore commercial roofs that are weathered but structurally sound.' },
-    { icon: 'house', h: 'GAF FORTIFIED Roof', p: 'A GAF listed FORTIFIED Roof contractor, for construction meeting the FORTIFIED standard.' },
-    { icon: 'tile', h: 'DaVinci Masterpiece', p: 'The specialty and synthetic tile credential, and the one behind both of our Project of the Year awards.' },
-    { icon: 'check', h: 'BBB Accredited, A+', p: 'Accredited with an A plus rating, listing the same address, owner and licence number you see here.' },
-  ], { tint: true })}
+${certGrid('Credentials', 'What Champion Roofing is certified to do', 'Certifications matter mostly because of what they unlock: the higher tier manufacturer warranties that a non certified roofer cannot register for you. Open any brand to see the specific certifications.', [
+    { name: 'GAF', mark: 'GAF', status: 'Four GAF certifications', items: [
+      ['Master Elite', 'The residential certification held by a small proportion of American roofing contractors, and what allows us to offer upgraded GAF warranties.'],
+      ['Certified Commercial', 'The commercial equivalent, covering low slope and commercial roofing systems.'],
+      ['CoatingsPro', 'Liquid applied roofing systems, used to restore commercial roofs that are weathered but structurally sound.'],
+      ['FORTIFIED Roof', 'A GAF listed FORTIFIED Roof contractor, for construction meeting the FORTIFIED standard.'],
+    ] },
+    { name: 'DaVinci Roofscapes', mark: 'DaVinci', status: 'Masterpiece Contractor', items: [
+      ['Masterpiece Contractor', 'The specialty and synthetic tile credential behind our Project of the Year awards.'],
+      ['Project of the Year, 2021', 'Donald W. Reynolds Complex, Bethany Children\'s Health Center.'],
+      ['Project of the Year, 2023', 'Gaillardia Office Park.'],
+    ] },
+    { name: 'Brava Roof Tile', mark: 'Brava', status: 'Certified contractor', items: [
+      ['First Brava installation in Oklahoma', 'On a church project, working alongside the product\'s founder.'],
+      ['Certified Brava contractor', 'Composite slate, shake and barrel tile, installed to the manufacturer\'s specification.'],
+    ] },
+    { name: 'Malarkey', mark: 'Malarkey', status: 'Certified contractor', items: [
+      ['Certified contractor', 'One of the four shingle brands we install.'],
+      ['Higher tier warranties', 'Extended Malarkey warranties registered for qualifying customers.'],
+    ] },
+    { name: 'Owens Corning', mark: 'Owens Corning', status: 'Certified contractor', items: [
+      ['Certified contractor', 'One of the four shingle brands we install.'],
+      ['Higher tier warranties', 'Extended Owens Corning warranties registered for qualifying customers.'],
+    ] },
+    { name: 'CertainTeed', mark: 'CertainTeed', status: 'Certified contractor', items: [
+      ['Certified contractor', 'One of the four shingle brands we install.'],
+      ['Higher tier warranties', 'Extended CertainTeed warranties registered for qualifying customers.'],
+    ] },
+  ], {
+    h: 'BBB Accredited Business, A+ rating',
+    p: 'Accredited with an A plus rating under the same name, address and licence number you see on this site.',
+    url: BIZ.bbbUrl,
+  })}
 
 ${split({
     eb: 'The awards',
@@ -106,14 +131,14 @@ ${split({
   })}
 
 ${manifesto('How we work', 'The things that actually distinguish one roofing company from another', `Every roofing company in Oklahoma City says the same handful of things about quality and service. These are the commitments that are actually different, in the owner’s own words where we have them.`, [
-    { icon: 'check', h: `The price is the price`, quote: `I do not like change orders. When we give you a price, that is going to be the price. If we come across something, we usually just eat it. We do not pass it along to the customer.`, p: `Change orders are a genuine profit centre in this trade. A number gets quoted, work begins, and the additions start arriving.
+    { icon: 'check', h: `The price is the price`, quote: `I do not like change orders. When we give you a price, that is the price. If we come across something mid job, we usually absorb it rather than passing it on to the customer.`, p: `Change orders are a genuine profit centre in this trade. A number gets quoted, work begins, and the additions start arriving.
 
 The exception is a condition nobody could have known about, such as a structural problem hidden beneath decking. Even then, you hear about it before anything is done.` },
     { icon: 'shield', h: `We will not install a shingle we would not warranty`, p: `If a product has a known problem, it does not go on your house, regardless of whether it is cheap, available or already ordered.
 
 We have moved customers off a synthetic product mid programme when a recall emerged, and gone back to a system we trusted instead.` },
-    { icon: 'users', h: `Every customer gets the same crew`, quote: `Nobody is special, everybody, we just try to put on a good roof for everybody.`, p: `We install designer synthetic slate on some of the more expensive streets around the metro, and we also do small repairs on ordinary houses. The standard does not change between them.` },
-    { icon: 'phone', h: `The sales approach is not a sales approach`, quote: `They are not real salesy. We treat people like they are family. We are here to help. We want to understand you, we want to know what you are looking for out of this so that we can best serve you.`, p: `Our people are not commission driven closers.
+    { icon: 'users', h: `The crew that starts your roof finishes it`, quote: `Nobody is special here. We just try to put a good roof on for everybody.`, p: `Our crews have worked with us for years. They split into smaller teams by project, so the people who set up on your first morning are the people who finish, and nobody rotates in and out mid job. The same crews that handle our tile work at OU and OSU handle a small repair on an ordinary house, to the same standard.` },
+    { icon: 'phone', h: `The sales approach is not a sales approach`, quote: `Our people are not salesy. We treat customers like family. We are here to help, to understand what you are looking for, and to serve you as well as we can.`, p: `Our people are not commission driven closers.
 
 The practical version of that is spending time on someone’s best interest rather than on a close, and then usually getting the roof anyway because the honest opinion is what they wanted.` },
     { icon: 'award', h: `We stand behind work past the warranty when it is our fault`, quote: `In Oklahoma, your name gets spread pretty fast if you do a bad job.`, p: `There is a roof we replaced where the customer called five years later, after the warranty had already expired, because a problem had appeared. We went out, looked at it, decided it was our fault, and dealt with it.
@@ -148,7 +173,7 @@ ${split({
       ['The Salvation Army.', 'Supported by the company.'],
     ],
     image: 'real-timber-pavilion',
-    alt: 'A timber framed pavilion with a newly installed shingle roof',
+    alt: 'A timber framed golf simulator pavilion in Oklahoma City with a new shingle roof by Champion Roofing',
     reverse: true,
   })}
 
@@ -164,7 +189,7 @@ ${faqSection('About FAQs', 'Questions about the company', 'The verifiable detail
     },
     {
       q: 'What certifications does Champion Roofing hold?',
-      a: 'GAF Master Elite residential roofing contractor, GAF Certified commercial contractor, GAF CoatingsPro liquid applied roofing contractor, GAF listed FORTIFIED Roof contractor, and DaVinci Masterpiece contractor.\n\nChampion Roofing is also a BBB accredited business with an A plus rating.',
+      a: 'GAF Master Elite residential roofing contractor, GAF Certified commercial contractor, GAF CoatingsPro liquid applied roofing contractor, GAF listed FORTIFIED Roof contractor, and DaVinci Masterpiece contractor. We are a certified Brava contractor, and certified with Malarkey, Owens Corning and CertainTeed, which is what lets us register their higher tier warranties for you.\n\nChampion Roofing is also a BBB accredited business with an A plus rating.',
     },
     {
       q: 'Has Champion Roofing won any awards?',
@@ -213,10 +238,10 @@ ${pageHero({
       { img: 'real-commercial-campus', alt: 'A large commercial campus building with a fountain in the foreground', cap: 'Commercial campus roof' },
       { img: 'real-french-brick-estate', alt: 'A French style brick estate with a new architectural shingle roof', cap: 'Estate re roof, north metro' },
       { img: 'real-ranch-new-roof', alt: 'A single storey ranch home with a newly installed dark shingle roof', cap: 'Ranch home, new shingle roof' },
-      { img: 'real-timber-pavilion', alt: 'A timber framed pavilion with a newly installed shingle roof', cap: 'Timber pavilion, new construction' },
+      { img: 'real-timber-pavilion', alt: 'A timber framed golf simulator pavilion with a new shingle roof', cap: 'Golf simulator pavilion, new construction' },
       { img: 'real-flat-roof-drone', alt: 'Drone view along the coping of a commercial low slope roof', cap: 'Low slope commercial, coping detail' },
       { img: 'real-multifamily-sign', alt: 'A two storey multifamily building with a Champion Roofing yard sign in front', cap: 'Multifamily property re roof' },
-      { img: 'real-roofer-ladder-chimney', alt: 'A crew member on a ladder working beside a brick chimney', cap: 'Chimney and flashing work' },
+      { img: 'real-supply-truck', alt: 'A Champion Roofing materials delivery truck at a coned off Oklahoma City job site', cap: 'Materials delivery, site coned off' },
       { img: 'real-property-staging', alt: 'Protective staging and covers set up around a house before roofing work', cap: 'Property protected before tear off' },
     ])}
   </div>
@@ -245,7 +270,7 @@ ${split({
 ${statStrip([
     { count: 2, label: 'DaVinci Project of the Year awards' },
     { pre: '1st', label: 'Brava install in Oklahoma' },
-    { count: 5, label: 'Metro neighbourhoods we maintain' },
+    { count: 9, label: 'Metro cities we serve' },
     { count: 22, label: 'Years of Oklahoma City roofs' },
   ])}
 
@@ -408,7 +433,7 @@ const faq = {
     },
     {
       q: 'What warranty do I get?',
-      a: 'A two year written workmanship warranty from Champion Roofing on every roof we install. That covers anything installed improperly, or a detail we missed that causes a leak.\n\nQualifying customers can additionally purchase higher tier GAF or Malarkey manufacturer warranties, available in 25 and 30 year options, which include extended manufacturer backed workmanship coverage and are transferable if you sell the property.',
+      a: 'A two year written workmanship warranty from Champion Roofing on every roof we install. That covers anything installed improperly, or a detail we missed that causes a leak.\n\nQualifying customers can additionally purchase higher tier GAF, Owens Corning, CertainTeed or Malarkey manufacturer warranties, available in 25 and 30 year options, which include extended manufacturer backed workmanship coverage and are transferable if you sell the property.',
     },
     {
       q: 'How do I make a claim under the workmanship warranty?',
@@ -461,7 +486,7 @@ ${faqSection(
       { q: 'How much will my roof cost?', a: 'We do not quote roofs over the phone, because the honest answer depends on the size and complexity of the roof, the material, the condition of the decking underneath, and whether insurance is involved.\n\nWhat we will commit to is that the assessment costs nothing, and the price we give you afterwards is the price you pay. We do not use change orders as a profit centre.' },
       { q: 'Is the assessment really free?', a: 'Yes. No cost, no obligation, and no charge if the answer is that your roof is fine.\n\nAn inspector comes out, flies the roof with a drone in three passes, talks the findings through with you on site, and emails you a written report either way.' },
       { q: 'Do you offer emergency or 24 hour service?', a: 'No, and we would rather say so plainly than imply otherwise. Champion Roofing does not run a 24 hour emergency dispatch.\n\nOur office hours are Monday to Friday, 9am to 5pm. Calls received after hours go to voicemail. The contact form on this site is open around the clock and the office picks it up the next working day.' },
-      { q: 'What warranty do I get?', a: 'A two year written workmanship warranty from Champion Roofing on every roof we install. That covers anything installed improperly, or a detail we missed that causes a leak.\n\nQualifying customers can additionally purchase higher tier GAF or Malarkey manufacturer warranties, available in 25 and 30 year options, which include extended manufacturer backed workmanship coverage and are transferable if you sell the property.' },
+      { q: 'What warranty do I get?', a: 'A two year written workmanship warranty from Champion Roofing on every roof we install. That covers anything installed improperly, or a detail we missed that causes a leak.\n\nQualifying customers can additionally purchase higher tier GAF, Owens Corning, CertainTeed or Malarkey manufacturer warranties, available in 25 and 30 year options, which include extended manufacturer backed workmanship coverage and are transferable if you sell the property.' },
       { q: 'How do I make a claim under the workmanship warranty?', a: 'Call the office. If something we installed is causing a leak, we come out and deal with it.\n\nIn practice we have honoured problems past the warranty period when the fault was ours. There is a roof where the customer called five years later, after the warranty had expired, and we took care of it because it was our fault.' },
       { q: 'Will you help with my insurance claim?', a: 'Yes, on the roofing side. We document the damage, meet your adjuster at the property, reconcile the approved scope with your carrier, and handle the roofing paperwork. Where a replacement is required we document code related decking conditions for supplementation.\n\nWhat we cannot do is determine the outcome. Your carrier decides. Be careful of any roofer who guarantees an approval.' },
       { q: 'Do you use subcontractors?', a: 'We put our own foremen on site, one on residential work and usually two on commercial. Their job is to manage the work, verify materials against the specification, keep the site safe and supervise the cleanup.\n\nCompany leadership also visits job sites to check workmanship and cleanup, because quality that is not inspected does not stay quality.' },
@@ -605,7 +630,7 @@ ${steps('What happens next', 'After you hit send', 'Four steps and no mystery ab
 
 ${areasSection(true)}
 
-${ctaBand('Prefer to just call?', `The office is open Monday to Friday, 9am to 5pm Central. Call ${BIZ.phone}.`, 'real-roofer-ladder-chimney')}
+${ctaBand('Prefer to just call?', `The office is open Monday to Friday, 9am to 5pm Central. Call ${BIZ.phone}.`, 'real-landscape-protection')}
 `,
 };
 
@@ -642,6 +667,7 @@ ${pageHero({
     <ul>
       <li>We do not sell your information.</li>
       <li>We do not rent or trade it to third parties for their marketing.</li>
+      <li>Mobile phone numbers and text messaging consent are never shared with third parties or affiliates for marketing or promotional purposes.</li>
       <li>We do not add you to unrelated mailing lists because you asked about a roof.</li>
     </ul>
 
@@ -730,7 +756,7 @@ ${pageHero({
     <h2>Cost</h2>
     <p>Message and data rates may apply.</p>
     <h2>Opting out</h2>
-    <p>Reply STOP at any time to stop receiving messages. Reply HELP for help, or call <a href="tel:${BIZ.phoneRaw}">${BIZ.phone}</a>.</p>
+    <p>Reply STOP at any time to stop receiving messages. Reply HELP for help, call <a href="tel:${BIZ.phoneRaw}">${BIZ.phone}</a>, or email <a href="mailto:${BIZ.email}">${BIZ.email}</a>.</p>
     <h2>Carriers</h2>
     <p>Carriers are not liable for delayed or undelivered messages.</p>
     <h2>Privacy</h2>

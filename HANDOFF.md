@@ -621,3 +621,41 @@ node scripts/qa.mjs
 ```bash
 node scripts/shots.mjs
 ```
+
+
+## From the website demo call, 8 September 2026
+
+Done on the site:
+- Lead form: "Brava synthetic roofing" added to the dropdown; SMS opt in checkbox with the
+  carrier required disclosures, linking /sms-terms and /sms-privacy-policy; consent is sent
+  as an explicit Yes or No field on every submission. /privacy carries the mobile no share
+  clause and the footer links the SMS terms, so a Twilio reviewer can reach all of it.
+- Warranty copy now names the four shingle brands Champion installs: GAF, Owens Corning,
+  CertainTeed and Malarkey. Job length: shingle in a day or two, tile/slate/Brava a week plus.
+- Storm page: hail is directional, but the advice is now "get the roof assessed before you
+  call in a claim", with the one slope repair versus replacement pitfall explained.
+- Commercial: modified bitumen and coatings are separate items with accurate descriptions;
+  the systems blurb notes that bid and contractor led work follows the architect's spec.
+- Homepage reviews moved up to sit directly after the core services row (John's suggestion,
+  still pending Preston's preference of before the Mike Cowan section).
+- About: certifications consolidated into one card per brand with the individual
+  certifications behind a disclosure; Brava, Malarkey, Owens Corning and CertainTeed added;
+  BBB A+ pulled out as its own band. Mike's quotes lightly cleaned up for clarity, same ideas.
+- "Every customer gets the same crew" reworded: the crew that starts your roof finishes it.
+- "5 metro neighbourhoods" stat replaced with "9 metro cities we serve".
+- Photos: the chimney in front of the dormer image removed everywhere; the oversized gutter
+  photo replaced; the unharnessed stock crew photos replaced; the pavilion captioned as the
+  golf simulator pavilion it is. Our Work photos open in a lightbox with arrows and keyboard.
+
+Waiting on the client:
+- Brava certification tier (site says "certified contractor" until confirmed).
+- Exact certification levels with Malarkey, Owens Corning and CertainTeed, and official logo
+  files for GAF, DaVinci, Brava, Malarkey, Owens Corning, CertainTeed and BBB.
+- BBB profile URL (the band shows a button automatically once BIZ.bbbUrl is set).
+- Photos: the synthetic shake before and after, gutters being installed, a coating and a mod
+  bit job, chimney flashing, multifamily, churches, museums, hospitals, the team in uniform
+  and the trucks lined up. The before and after section will switch to real pairs then.
+- Per city: landmarks, neighbourhood names as locals say them, community projects, and the two
+  or three questions the office hears most from each area, for city FAQs.
+- Preston to review the commercial page and decide on the reviews position.
+- Braden's email with storm page wording pointers; Twilio campaign rejection emails for John.

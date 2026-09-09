@@ -91,8 +91,8 @@ ${split({
       ['Attic investigation for leaks.', 'Where the water is actually entering, not where it lands.'],
       ['A report either way.', 'Emailed to you after the visit.'],
     ],
-    image: 'real-roofer-ladder-chimney',
-    alt: 'A Champion Roofing inspector climbing a ladder to a roof beside a brick chimney',
+    image: 'storm-tarp-crew',
+    alt: 'Two roofers in harnesses securing a tarp over a storm damaged roof',
     reverse: true,
   })}
 
@@ -100,7 +100,9 @@ ${detailAccordion('The detail', 'Why hail damage is worth having looked at even 
     { icon: 'ridge', h: `Why we look at more than the roof`, p: `Soft metals mark more readily than shingles. So do window screens, and so does fencing. When our inspector documents those alongside the roof, it establishes a coherent picture of what the storm actually did, rather than a single ambiguous observation on one slope.
 
 It also explains why gutters and screens come up so often in our work. A hail event that damaged your roof very probably marked the soft metals and the screens too, and those are separate conversations with your carrier.` },
-    { icon: 'storm', h: `Hail is often directional`, p: `This is why we deliberately check several sides of the house rather than photographing one slope and calling it done. Storms come from a direction. If impacts appear on the south and west elevations and nowhere else, that is consistent with a real event, and it is documented that way. If the wear pattern is uniform across all four elevations and there are no impact marks, that is age rather than hail, and we will say so.` },
+    { icon: 'storm', h: `Hail is often directional`, p: `This is why we deliberately check several sides of the house rather than photographing one slope and calling it done. Storms come from a direction. If impacts appear on the south and west elevations and nowhere else, that is consistent with a real event, and it is documented that way. If the wear pattern is uniform across all four elevations and there are no impact marks, that is age rather than hail, and we will say so.
+
+It also matters for the claim itself. When only one slope is damaged, a carrier may approve repairs rather than a replacement, which can land under your deductible and leave one slope looking different from the rest. That is why we say get the roof assessed before you call it in, even after a bad storm.` },
     { icon: 'ridge', h: `What we will not do`, p: `We will not invent damage to generate a claim. That is fraud, it is common enough in this trade to have given roofing a reputation, and it is a fast way to lose a name in a market this size.
 
 We will also not promise you an insurance outcome. We document what we find, we meet your adjuster at the property, and we make the case for the scope the roof genuinely needs. The decision belongs to your carrier.` },
@@ -189,7 +191,7 @@ const stormDamage = {
     },
     {
       q: 'My neighbours all got new roofs. Does that mean I need one?',
-      a: 'Not necessarily, and it is worth being careful here. Hail is frequently directional, so one side of a street can be hit meaningfully harder than the other.\n\nWe deliberately check several elevations of your house rather than assuming. If your roof was not damaged, that is what our report will say, even when the houses either side of you are being replaced.',
+      a: 'Not necessarily. Hail is directional, and what matters is the condition of your roof, not what happened next door. The mistake to avoid is calling in a claim before a trustworthy professional has assessed the roof, even after a bad storm.\n\nIf only one slope took damage, your carrier may pay for repairs on that slope rather than a replacement. That can leave you under your deductible, paying out of pocket, with one slope that no longer matches the rest of the roof. We check every elevation first, then tell you honestly whether a claim is worth filing.',
     },
     {
       q: 'What about the gutters, screens and fencing?',
@@ -247,7 +249,7 @@ ${honestBlock(
     [
       ['A roofer cannot approve your claim.', 'Only your carrier can. Anyone guaranteeing an approval is overselling.'],
       ['Not every storm causes damage.', 'If your roof is fine, our report will say so even if the whole street is being replaced.'],
-      ['Hail is directional.', 'Your neighbour getting a new roof is not evidence about yours.'],
+      ['Hail is directional.', 'One slope can be hit and the rest fine, which changes what a claim covers. Get the roof assessed before you call it in.'],
       ['Damage is often invisible from the ground.', 'Which cuts both ways: it can be real when you cannot see it, and absent when you think you can.'],
       ['We do not run emergency dispatch.', 'No 24/7 claim here. Calls after 5pm go to voicemail and the form is always open.'],
     ],
@@ -264,7 +266,7 @@ Where our assessment and the adjuster's differ, there is usually some back and f
     { icon: 'house', h: `Decking and supplementation`, p: `Decking condition cannot be assessed through an existing roof. When a replacement is approved and the tear off exposes decking that is damaged or does not meet current code, that gets documented for supplementation. It is a normal part of the process and it exists so the approved scope covers what the roof genuinely requires.` },
     { icon: 'ridge', h: `What we install afterwards`, p: `Where it makes sense given the hail exposure here, we try to get customers into a class 4 impact rated shingle, which is built to handle hail better than a standard product. It is worth asking your carrier how they treat impact rated roofing, because some treat it differently on premiums.
 
-We will not install a shingle we are not prepared to warranty ourselves. Every roof we install carries a two year written workmanship warranty, and qualifying customers can purchase upgraded GAF or Malarkey manufacturer warranties in 25 and 30 year options.` },
+We will not install a shingle we are not prepared to warranty ourselves. Every roof we install carries a two year written workmanship warranty, and qualifying customers can purchase upgraded GAF, Owens Corning, CertainTeed or Malarkey manufacturer warranties in 25 and 30 year options.` },
   ], { tint: true })}
 
 ${pageReviews('/storm-damage-roof-repair', 'What customers say after a storm')}
@@ -288,7 +290,7 @@ ${faqSection('Storm FAQs', 'Storm and hail damage questions', 'Straight answers,
     },
     {
       q: 'My neighbours all got new roofs. Does that mean I need one?',
-      a: 'Not necessarily, and it is worth being careful here. Hail is frequently directional, so one side of a street can be hit meaningfully harder than the other.\n\nWe deliberately check several elevations of your house rather than assuming. If your roof was not damaged, that is what our report will say, even when the houses either side of you are being replaced.',
+      a: 'Not necessarily. Hail is directional, and what matters is the condition of your roof, not what happened next door. The mistake to avoid is calling in a claim before a trustworthy professional has assessed the roof, even after a bad storm.\n\nIf only one slope took damage, your carrier may pay for repairs on that slope rather than a replacement. That can leave you under your deductible, paying out of pocket, with one slope that no longer matches the rest of the roof. We check every elevation first, then tell you honestly whether a claim is worth filing.',
     },
     {
       q: 'What about the gutters, screens and fencing?',
@@ -445,7 +447,7 @@ const specialtyRoofing = {
   faqs: [
     {
       q: 'Why do so few roofers in Oklahoma City quote tile?',
-      a: 'Because it is expensive and unforgiving. In the owner\'s words: a lot of people do not want to do it because it costs so much, and if you make a mistake it is going to be a big deal.\n\nThat is genuinely the situation. Tile and slate materials cost a great deal more than asphalt, the install is slower, and errors are expensive to correct. It is also why there is not much competition for this work in the metro, and why we do a lot of it.',
+      a: 'Because it is expensive and unforgiving. In the owner\'s words: not many companies want to do this work, because it costs a lot and a mistake is a big deal.\n\nThat is genuinely the situation. Tile and slate materials cost a great deal more than asphalt, the install is slower, and errors are expensive to correct. It is also why there is not much competition for this work in the metro, and why we do a lot of it.',
     },
     {
       q: 'What makes a correct tile installation different from an ordinary roof?',
@@ -514,7 +516,7 @@ ${infoGrid('Materials', 'What we install', 'Six specialty material families, eac
   ], { tint: true })}
 
 ${stickyFeature('The method', 'What a correct tile installation actually involves', `The visible part of a tile roof is the least important part of it. What decides whether it performs for decades is entirely underneath, and invisible the moment the last tile is set.`, [
-    { img: 'install-battens-crew', alt: `A crew laying tile over battens on a roof`, h: `Underlayment, battens and layout`, p: `On a tile roof the underlayment does far more work than it does under asphalt. Tile sheds the bulk of the water, but wind driven rain gets underneath it routinely, and the underlayment is what actually keeps the building dry.` },
+    { img: 'res-shake-gable', alt: `A crew laying tile over battens on a roof`, h: `Underlayment, battens and layout`, p: `On a tile roof the underlayment does far more work than it does under asphalt. Tile sheds the bulk of the water, but wind driven rain gets underneath it routinely, and the underlayment is what actually keeps the building dry.` },
     { img: 'specialty-tile-hands', alt: `Gloved hands setting a clay tile into place`, h: `Fastening, flashing and how the crew moves`, p: `Tile has to be secured against Oklahoma wind loads without cracking the material or creating a path for water. Every hip, valley, wall junction and penetration is then flashed in metal and detailed by hand. On a complex tile roof there are a great many of these.` },
     { img: 'real-tile-complete', alt: `A completed clay tile roof on a stucco home in Oklahoma City`, h: `Repair, matching and product we trust`, p: `A lot of our specialty work is repair rather than installation, and the hard part is matching: finding product close enough to what is there that the repair does not read as a patch from the street. We maintain specialty roofs in Nichols Hills, Gaillardia, Rose Creek, Cobblestone and Heritage Hills.` },
   ])}
@@ -523,13 +525,13 @@ ${statStrip([
     { count: 2, label: 'DaVinci Project of the Year awards' },
     { pre: '1st', label: 'Brava install in Oklahoma' },
     { count: 22, label: 'Years roofing Oklahoma City' },
-    { count: 5, label: 'Metro neighbourhoods we maintain' },
+    { count: 9, label: 'Metro cities we serve' },
   ])}
 
 ${faqSection('Specialty FAQs', 'Tile and slate questions', 'The things people ask when they have a roof most contractors will not touch.', [
     {
       q: 'Why do so few roofers in Oklahoma City quote tile?',
-      a: 'Because it is expensive and unforgiving. In the owner\'s words: a lot of people do not want to do it because it costs so much, and if you make a mistake it is going to be a big deal.\n\nThat is genuinely the situation. Tile and slate materials cost a great deal more than asphalt, the install is slower, and errors are expensive to correct. It is also why there is not much competition for this work in the metro, and why we do a lot of it.',
+      a: 'Because it is expensive and unforgiving. In the owner\'s words: not many companies want to do this work, because it costs a lot and a mistake is a big deal.\n\nThat is genuinely the situation. Tile and slate materials cost a great deal more than asphalt, the install is slower, and errors are expensive to correct. It is also why there is not much competition for this work in the metro, and why we do a lot of it.',
     },
     {
       q: 'What makes a correct tile installation different from an ordinary roof?',

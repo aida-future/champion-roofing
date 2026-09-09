@@ -44,11 +44,11 @@ const residentialRoofing = {
     },
     {
       q: 'What roofing materials do you install on homes?',
-      a: 'Asphalt shingles including architectural and designer profiles, metal in standing seam, metal shingle and corrugated systems, clay and concrete tile, composite and synthetic tile, natural and synthetic slate, and wood and synthetic shake.\n\nWe are a GAF Master Elite residential contractor and a DaVinci Masterpiece contractor, and we were the first company in Oklahoma to install Brava synthetic roofing.',
+      a: 'Asphalt shingles from the four brands we trust, GAF, Owens Corning, CertainTeed and Malarkey, in architectural and designer profiles, metal in standing seam, metal shingle and corrugated systems, clay and concrete tile, composite and synthetic tile, natural and synthetic slate, and wood and synthetic shake.\n\nWe are a GAF Master Elite residential contractor and a DaVinci Masterpiece contractor, and we were the first company in Oklahoma to install Brava synthetic roofing.',
     },
     {
       q: 'How long does a residential roof replacement take?',
-      a: 'Most straightforward shingle replacements are a short job measured in days rather than weeks. Tile, slate and complex steep slope roofs take considerably longer because the detailing cannot be rushed.\n\nWeather moves the schedule. We stop or delay work when rain, snow or unsafe heat would put the crew or your property at risk, so a forecast can push a start date.',
+      a: 'Most shingle replacements are finished in a day, two at most. Tile, slate, Brava synthetic and complex steep slope roofs are a week long job or more, because the detailing cannot be rushed.\n\nWeather moves the schedule. We stop or delay work when rain, snow or unsafe heat would put the crew or your property at risk, so a forecast can push a start date.',
     },
     {
       q: 'Will my landscaping and property be protected?',
@@ -68,11 +68,11 @@ ${pageHero({
 
 ${split({
     eb: 'The standard',
-    title: 'The same crew whether it is a slate roof or a small repair',
+    title: 'The same standard whether it is a slate roof or a small repair',
     body: [
       'Champion Roofing has been roofing houses in Oklahoma City since 2004, and the owner spent years on roofs himself before he started the company. That shapes how jobs run here: the standard gets set from the roof down.',
       'We work on both ends of this market. There are streets around the metro where nearly every house carries synthetic slate or designer tile, and we have roofed a lot of them. We also do repairs on ordinary houses and outbuildings. Same crews, same warranty, same standard.',
-      'In the owner\'s words: <strong>nobody is special, everybody, we just try to put on a good roof for everybody.</strong>',
+      'In the owner\'s words: <strong>nobody is special here. We just try to put a good roof on for everybody.</strong>',
     ],
     list: [
       ['GAF Master Elite residential contractor.', 'Which is what allows us to offer the upgraded manufacturer warranties.'],
@@ -119,7 +119,7 @@ If the drone imagery cannot confirm what is happening, we get on the roof and in
 
 A foreman is on site through the day. Their job is to stay flexible as things come up, keep the site safe while people are moving in and out, verify that the materials delivered are the materials specified, and make sure the cleanup at the end is real. That means debris cleared, materials accounted for, and the ground swept with magnets for nails.` },
     { icon: 'check', h: `The price you were given is the price`, p: `Change orders are common in this trade and they are a genuine source of friction. Champion Roofing does not work that way. If something turns up mid job, we generally absorb it rather than passing it along. The exception is something nobody could have known about, such as a structural problem hidden under the decking, and even then you hear about it before anything is done.` },
-    { icon: 'shield', h: `And it is warrantied`, p: `Every roof we install carries a two year written workmanship warranty covering anything installed improperly or a detail we missed that causes a leak. Qualifying customers can purchase higher tier GAF or Malarkey manufacturer warranties, available in 25 and 30 year options, which include extended manufacturer backed workmanship coverage and are transferable if you sell the house.
+    { icon: 'shield', h: `And it is warrantied`, p: `Every roof we install carries a two year written workmanship warranty covering anything installed improperly or a detail we missed that causes a leak. Qualifying customers can purchase higher tier GAF, Owens Corning, CertainTeed or Malarkey manufacturer warranties, available in 25 and 30 year options, which include extended manufacturer backed workmanship coverage and are transferable if you sell the house.
 
 We also will not install a shingle we are not prepared to warranty. If a product has a known problem, we do not put it on your house just because it is cheap and available.` },
   ], { tint: true })}
@@ -142,11 +142,11 @@ ${faqSection(
       },
       {
         q: 'What roofing materials do you install on homes?',
-        a: 'Asphalt shingles including architectural and designer profiles, metal in standing seam, metal shingle and corrugated systems, clay and concrete tile, composite and synthetic tile, natural and synthetic slate, and wood and synthetic shake.\n\nWe are a GAF Master Elite residential contractor and a DaVinci Masterpiece contractor, and we were the first company in Oklahoma to install Brava synthetic roofing.',
+        a: 'Asphalt shingles from the four brands we trust, GAF, Owens Corning, CertainTeed and Malarkey, in architectural and designer profiles, metal in standing seam, metal shingle and corrugated systems, clay and concrete tile, composite and synthetic tile, natural and synthetic slate, and wood and synthetic shake.\n\nWe are a GAF Master Elite residential contractor and a DaVinci Masterpiece contractor, and we were the first company in Oklahoma to install Brava synthetic roofing.',
       },
       {
         q: 'How long does a residential roof replacement take?',
-        a: 'Most straightforward shingle replacements are a short job measured in days rather than weeks. Tile, slate and complex steep slope roofs take considerably longer because the detailing cannot be rushed.\n\nWeather moves the schedule. We stop or delay work when rain, snow or unsafe heat would put the crew or your property at risk, so a forecast can push a start date.',
+        a: 'Most shingle replacements are finished in a day, two at most. Tile, slate, Brava synthetic and complex steep slope roofs are a week long job or more, because the detailing cannot be rushed.\n\nWeather moves the schedule. We stop or delay work when rain, snow or unsafe heat would put the crew or your property at risk, so a forecast can push a start date.',
       },
       {
         q: 'Will my landscaping and property be protected?',
@@ -338,7 +338,7 @@ const roofReplacement = {
   faqs: [
     {
       q: 'How long does a roof replacement take?',
-      a: 'A straightforward asphalt shingle replacement on a typical Oklahoma City home is usually a matter of days rather than weeks. Tile, slate and complex steep slope roofs take substantially longer, because the detailing on those systems cannot be rushed without causing problems later.\n\nWeather is the variable we cannot control. We delay or stop work when rain, snow or unsafe heat would put the crew or your property at risk. Sometimes that means starting later in the afternoon rather than not at all.',
+      a: 'A straightforward shingle replacement on a typical Oklahoma City home is finished in a day, two at most. Tile, slate, Brava synthetic and complex steep slope roofs are a week long job or more, because the detailing on those systems cannot be rushed without causing problems later.\n\nWeather is the variable we cannot control. We delay or stop work when rain, snow or unsafe heat would put the crew or your property at risk. Sometimes that means starting later in the afternoon rather than not at all.',
     },
     {
       q: 'What happens if you find bad decking under my old roof?',
@@ -354,7 +354,7 @@ const roofReplacement = {
     },
     {
       q: 'What warranty comes with a new roof?',
-      a: 'Every roof we install carries a two year written workmanship warranty from Champion Roofing, covering anything installed improperly or a missed detail that causes a leak.\n\nQualifying customers can also purchase higher tier GAF or Malarkey manufacturer warranties, available in 25 and 30 year options. Those include extended manufacturer backed workmanship coverage and are transferable if you sell the house.',
+      a: 'Every roof we install carries a two year written workmanship warranty from Champion Roofing, covering anything installed improperly or a missed detail that causes a leak.\n\nQualifying customers can also purchase higher tier GAF, Owens Corning, CertainTeed or Malarkey manufacturer warranties, available in 25 and 30 year options. Those include extended manufacturer backed workmanship coverage and are transferable if you sell the house.',
     },
     {
       q: 'Do you offer impact resistant shingles for hail?',
@@ -380,7 +380,7 @@ ${split({
     title: 'When we give you a price, that is the price',
     body: [
       'A lot of companies in this trade make real money on change orders. A number gets quoted low, work begins, and then the additions start arriving. Champion Roofing does not operate that way, and the owner is blunt about it.',
-      '<strong>I do not like change orders. When we give you a price, that is going to be the price. If we come across something, we usually just eat it. We do not pass it along to the customer.</strong>',
+      '<strong>I do not like change orders. When we give you a price, that is the price. If we come across something mid job, we usually absorb it rather than passing it on to the customer.</strong>',
       'The only exception is a condition nobody could reasonably have known about, such as a structural problem hidden under the decking. Even then, you hear about it before anything gets done, not on the final invoice.',
     ],
     list: [
@@ -426,7 +426,7 @@ ${pageReviews('/roof-replacement', 'What customers say about their new roof')}
 ${faqSection('Replacement FAQs', 'Roof replacement questions', 'The practical ones people ask before committing to a new roof.', [
     {
       q: 'How long does a roof replacement take?',
-      a: 'A straightforward asphalt shingle replacement on a typical Oklahoma City home is usually a matter of days rather than weeks. Tile, slate and complex steep slope roofs take substantially longer, because the detailing on those systems cannot be rushed without causing problems later.\n\nWeather is the variable we cannot control. We delay or stop work when rain, snow or unsafe heat would put the crew or your property at risk. Sometimes that means starting later in the afternoon rather than not at all.',
+      a: 'A straightforward shingle replacement on a typical Oklahoma City home is finished in a day, two at most. Tile, slate, Brava synthetic and complex steep slope roofs are a week long job or more, because the detailing on those systems cannot be rushed without causing problems later.\n\nWeather is the variable we cannot control. We delay or stop work when rain, snow or unsafe heat would put the crew or your property at risk. Sometimes that means starting later in the afternoon rather than not at all.',
     },
     {
       q: 'What happens if you find bad decking under my old roof?',
@@ -442,7 +442,7 @@ ${faqSection('Replacement FAQs', 'Roof replacement questions', 'The practical on
     },
     {
       q: 'What warranty comes with a new roof?',
-      a: 'Every roof we install carries a two year written workmanship warranty from Champion Roofing, covering anything installed improperly or a missed detail that causes a leak.\n\nQualifying customers can also purchase higher tier GAF or Malarkey manufacturer warranties, available in 25 and 30 year options. Those include extended manufacturer backed workmanship coverage and are transferable if you sell the house.',
+      a: 'Every roof we install carries a two year written workmanship warranty from Champion Roofing, covering anything installed improperly or a missed detail that causes a leak.\n\nQualifying customers can also purchase higher tier GAF, Owens Corning, CertainTeed or Malarkey manufacturer warranties, available in 25 and 30 year options. Those include extended manufacturer backed workmanship coverage and are transferable if you sell the house.',
     },
     {
       q: 'Do you offer impact resistant shingles for hail?',

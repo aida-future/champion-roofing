@@ -21,7 +21,7 @@ const FAQS = [
   },
   {
     q: 'What warranty comes with a Champion Roofing roof?',
-    a: 'Every roof we install comes with a two year written workmanship warranty from Champion Roofing. That covers anything installed improperly, or a detail we missed that causes a leak.\n\nQualifying customers can also purchase higher tier GAF or Malarkey manufacturer warranties, which run to 25 or 30 years and include extended manufacturer backed workmanship coverage. Those upgraded warranties are transferable if you sell the house.',
+    a: 'Every roof we install comes with a two year written workmanship warranty from Champion Roofing. That covers anything installed improperly, or a detail we missed that causes a leak.\n\nQualifying customers can also purchase higher tier GAF, Owens Corning, CertainTeed or Malarkey manufacturer warranties, which run to 25 or 30 years and include extended manufacturer backed workmanship coverage. Those upgraded warranties are transferable if you sell the house.',
   },
   {
     q: 'What areas around Oklahoma City do you cover?',
@@ -62,7 +62,7 @@ const SERVICES = [
   {
     path: '/gutters', tag: 'Gutters', h: 'Seamless gutters',
     p: 'The service our reviews mention most after the roof itself. Seamless gutter installation, repair and leaf protection.',
-    img: 'gutter-downspout-white', alt: 'New white seamless gutter and downspout against a clear sky',
+    img: 'gutter-worker-install', alt: 'A Champion Roofing installer fitting a seamless gutter along an eave',
   },
 ];
 
@@ -150,6 +150,8 @@ ${serviceShowcase(
     SERVICES,
   )}
 
+${reviewSection({ tint: true })}
+
 ${droneSection()}
 
 ${compareSection()}
@@ -213,8 +215,6 @@ ${faqSection(
     FAQS,
     'light',
   )}
-
-${reviewSection({ tint: true })}
 
 ${ctaBand(
     'Get a straight answer about your roof',

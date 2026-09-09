@@ -396,6 +396,7 @@ function footer() {
         <li><a href="/service-areas">Service areas</a></li>
         <li><a href="/blog">Blog</a></li>
         <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/sms-terms">SMS terms</a></li>
       </ul>
     </div>
     <p class="foot-legal">${BIZ.legalNote}</p>

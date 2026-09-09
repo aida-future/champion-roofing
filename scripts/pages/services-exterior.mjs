@@ -63,7 +63,7 @@ ${pageHero({
     eb: 'Gutters',
     h1: 'Seamless gutters in Oklahoma City',
     lede: 'Seamless gutter installation, repair, maintenance and leaf protection. This is the service our customers bring up most often after the roof itself, and it gets treated accordingly.',
-    image: 'gutter-downspout-white',
+    image: 'gutter-worker-install',
     alt: 'A new white seamless gutter and downspout on an Oklahoma City home against a clear sky',
   })}
 
@@ -82,7 +82,7 @@ ${split({
       ['Leaf protection where it earns its place.', 'Fitted to the gutter profile you actually have.'],
       ['Assessed with the roof.', 'Because hail marks soft metals before it marks shingles.'],
     ],
-    image: 'gutter-worker-install',
+    image: 'gutter-leaf-guard',
     alt: 'A worker installing a seamless gutter along the eave of a house',
     reverse: true,
     cta: btn('/contact', 'Book a free assessment', 'btn-dark'),
@@ -99,7 +99,7 @@ ${infoGrid('What we do', 'Gutter services', 'Installation, repair and protection
   ], { tint: true })}
 
 ${stickyFeature('The detail', 'What gutters actually do, and what happens when they stop', `Gutters are the least glamorous part of a roof system and one of the more consequential. When they stop working, the damage does not stay at the gutter.`, [
-    { img: 'gutter-downspout-white', alt: `A new white seamless gutter and downspout against a clear sky`, h: `Where the water goes instead`, p: `When a gutter blocks or fails, water backs up at the eave, gets behind the fascia and reaches the roof decking at its most vulnerable edge. That becomes a rot problem in the roof structure, and it develops quietly over seasons.` },
+    { img: 'res-craftsman-gables', alt: `Eaves and gutters on a craftsman style home with a new shingle roof`, h: `Where the water goes instead`, p: `When a gutter blocks or fails, water backs up at the eave, gets behind the fascia and reaches the roof decking at its most vulnerable edge. That becomes a rot problem in the roof structure, and it develops quietly over seasons.` },
     { img: 'gutter-worker-install', alt: `A worker installing a seamless gutter along a roof eave`, h: `Seamless, and sized to the roof`, p: `Every joint is a seal, and every seal has a shorter life than the metal it joins. A sectional run has a joint every few feet. A seamless gutter is formed to the length of the run, so the only joints are at corners and outlets.` },
     { img: 'gutter-leaf-guard', alt: `Leaf protection being fitted over a residential gutter`, h: `Leaf protection, honestly`, p: `On a property with mature trees overhanging the roof, leaf protection removes a recurring maintenance job and prevents the blockages that cause everything above. On a property with clear sky above the gutters, the case is considerably weaker.` },
   ])}
@@ -148,7 +148,7 @@ ${related([
     { path: '/roof-replacement', icon: 'hammer', h: 'Roof replacement', p: 'Gutters are best handled with the roof.' },
   ])}
 
-${ctaBand('Get the gutters looked at', 'Free assessment, whether it is a repair, a replacement or just leaf protection.', 'gutter-leaf-guard')}
+${ctaBand('Get the gutters looked at', 'Free assessment, whether it is a repair, a replacement or just leaf protection.', 'real-french-brick-estate')}
 `,
 };
 

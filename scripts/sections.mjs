@@ -96,6 +96,13 @@ export function leadForm({ docked = true, title, blurb, compact = false } = {}) 
             <textarea id="lf-msg" name="Details" placeholder="Water stain on the ceiling, shingles in the yard after the storm, or anything else that helps."></textarea>
           </div>`}
         </div>
+        <!-- Text opt in. Unchecked by default, never required, and the payload
+             always carries an explicit Yes or No so the office can see consent. -->
+        <input type="hidden" name="SMS consent" value="No" data-sms-field>
+        <label class="consent">
+          <input type="checkbox" data-sms-consent>
+          <span>Text me about this request. By checking this box I agree to receive appointment and job update text messages from ${BIZ.legalName} at the number above. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of purchase. <a href="/sms-terms">SMS terms</a> and <a href="/sms-privacy-policy">SMS privacy policy</a>.</span>
+        </label>
         <div class="form-foot">
           <small>We use your details to respond to this request and nothing else. Calls after 5pm go to voicemail; this form is open around the clock.</small>
           <button class="btn btn-lg" type="submit">Request my free assessment${ICONS.arrow}</button>
@@ -235,7 +242,7 @@ const MATERIALS = [
     specs: [
       ['Systems we install', 'Three tab, architectural, designer'],
       ['Hail consideration', 'Class 4 impact rated options'],
-      ['Manufacturer', 'GAF and Malarkey'],
+      ['Manufacturers', 'GAF, Owens Corning, CertainTeed, Malarkey'],
     ],
   },
   {
@@ -1001,6 +1008,37 @@ export function errorPage(code, h1, lede, links) {
       </a>`).join('')}
     </div>
     <p class="errpage-foot">Or call the office on <a href="tel:${BIZ.phoneRaw}">${BIZ.phone}</a> and someone will point you the right way.</p>
+  </div>
+</section>`;
+}
+
+/* ---------- Certifications ----------
+   One card per manufacturer, the individual certifications behind a native
+   disclosure, and the BBB accreditation pulled out as its own band. Brand
+   marks are typeset until the official logo files arrive. */
+export function certGrid(eb, title, blurb, brands, bbb) {
+  return `
+<section class="sec sec-tint">
+  <span class="ghost" aria-hidden="true">Certified</span>
+  <div class="wrap">
+    ${secHead(eb, title, blurb)}
+    <div class="cert-grid">
+      ${brands.map((b, i) => `<details class="cert" data-reveal data-reveal-delay="${i % 3}">
+        <summary>
+          <span class="cert-mark" aria-hidden="true">${b.mark}</span>
+          <span class="cert-head"><b>${b.name}</b><span>${b.status}</span></span>
+          <span class="cert-toggle" aria-hidden="true">${ICONS.chevron}</span>
+        </summary>
+        <ul class="cert-list">
+          ${b.items.map((it) => `<li><b>${it[0]}</b><span>${it[1]}</span></li>`).join('')}
+        </ul>
+      </details>`).join('')}
+    </div>
+    <div class="cert-bbb" data-reveal>
+      <span class="cert-bbb-mark" aria-hidden="true">A+</span>
+      <div class="cert-bbb-txt"><b>${bbb.h}</b><p>${bbb.p}</p></div>
+      ${bbb.url ? `<a class="btn btn-dark" href="${bbb.url}" rel="noopener" target="_blank">See the BBB profile${ICONS.arrow}</a>` : ''}
+    </div>
   </div>
 </section>`;
 }

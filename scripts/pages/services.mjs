@@ -12,7 +12,7 @@ const services = {
   priority: '0.8',
   title: 'Roofing Services Oklahoma City | All Services | Champion Roofing',
   desc: 'Every Champion Roofing service in one place: roof repair, replacement, inspection, storm damage, metal, tile and slate, TPO, coatings, maintenance, seamless gutters and window replacement in Oklahoma City.',
-  ogImage: 'crew-gable-work',
+  ogImage: 'real-french-brick-estate',
   crumbs: [{ name: 'Services', path: '/services' }],
   service: {
     name: 'Roofing services',
@@ -25,8 +25,8 @@ ${pageHero({
     eb: 'Services',
     h1: 'Everything we do, in one place',
     lede: 'Residential, commercial and the exterior work that goes with a roof. Every card below is a real service with a real page behind it, and if you are not sure which one you need, the free assessment answers that question for you.',
-    image: 'crew-gable-work',
-    alt: 'Champion Roofing crew working on the gable of a residential roof in Oklahoma City',
+    image: 'real-french-brick-estate',
+    alt: 'A French style brick estate in Oklahoma City with a new architectural shingle roof by Champion Roofing',
   })}
 
 ${serviceGrid(
@@ -59,7 +59,7 @@ ${serviceGrid(
       { path: '/commercial/tpo-roofing', tag: 'TPO', h: 'TPO roofing', p: 'The white single ply membrane system we recommend most often for low slope commercial roofs.', img: 'tpo-white-sunlit', alt: 'A white TPO membrane roof in bright sunlight' },
       { path: '/commercial/roof-coatings', tag: 'Coatings', h: 'Roof coatings', p: 'GAF CoatingsPro liquid applied systems that restore a sound low slope roof without a tear off.', img: 'comm-lowslope-black', alt: 'A low slope commercial roof before coating restoration' },
       { path: '/commercial/roof-maintenance', tag: 'Maintenance', h: 'Roof maintenance', p: 'Scheduled inspection and upkeep that catches quiet failures before they reach the ceiling.', img: 'comm-modern-hvac', alt: 'Rooftop HVAC equipment on a modern commercial building roof' },
-      { path: '/gutters', tag: 'Gutters', h: 'Seamless gutters', p: 'Seamless gutters sized to the roof, plus honest advice about whether leaf protection is worth it.', img: 'gutter-downspout-white', alt: 'A new white seamless gutter and downspout against a clear sky' },
+      { path: '/gutters', tag: 'Gutters', h: 'Seamless gutters', p: 'Seamless gutters sized to the roof, plus honest advice about whether leaf protection is worth it.', img: 'gutter-worker-install', alt: 'An installer fitting a seamless gutter along a roof eave' },
       { path: '/window-replacement', tag: 'Windows', h: 'Window replacement', p: 'Storm damaged windows and screens, replaced with the roof.', img: 'window-install-exterior-two', alt: 'Two installers fitting a replacement window from the exterior of a home' },
     ],
   )}

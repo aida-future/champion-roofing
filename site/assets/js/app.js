@@ -260,6 +260,59 @@
     }
   }
 
+  /* ---------- Our work: open any photo larger ---------- */
+  var tiles = $$('.mosaic .tile');
+  if (tiles.length && 'HTMLDialogElement' in window) {
+    var CHEV_L = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>';
+    var CHEV_R = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>';
+    var CLOSE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>';
+    var lb = document.createElement('dialog');
+    lb.className = 'lightbox';
+    lb.setAttribute('aria-label', 'Project photo');
+    lb.innerHTML = '<button class="lb-close" type="button" aria-label="Close">' + CLOSE + '</button>' +
+      '<button class="lb-nav lb-prev" type="button" data-lb="-1" aria-label="Previous photo">' + CHEV_L + '</button>' +
+      '<figure><img alt=""><figcaption></figcaption></figure>' +
+      '<button class="lb-nav lb-next" type="button" data-lb="1" aria-label="Next photo">' + CHEV_R + '</button>';
+    document.body.appendChild(lb);
+    var lbImg = $('img', lb), lbCap = $('figcaption', lb), cur = 0;
+    // The largest candidate in the srcset, so the enlarged view is not the thumbnail.
+    function largest(img) {
+      var best = img.currentSrc || img.src, w = 0;
+      (img.getAttribute('srcset') || '').split(',').forEach(function (part) {
+        var m = part.trim().split(/\s+/);
+        var n = parseInt(m[1], 10);
+        if (n > w) { w = n; best = m[0]; }
+      });
+      return best;
+    }
+    function show(i) {
+      cur = (i + tiles.length) % tiles.length;
+      var im = $('img', tiles[cur]);
+      var cap = $('figcaption', tiles[cur]);
+      lbImg.src = largest(im);
+      lbImg.alt = im.alt;
+      lbCap.textContent = cap ? cap.textContent : '';
+    }
+    tiles.forEach(function (t, i) {
+      var cap = $('figcaption', t);
+      t.setAttribute('tabindex', '0');
+      t.setAttribute('role', 'button');
+      t.setAttribute('aria-label', 'View larger: ' + (cap ? cap.textContent : 'project photo'));
+      var openIt = function () { show(i); lb.showModal(); };
+      t.addEventListener('click', openIt);
+      t.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openIt(); } });
+    });
+    $('.lb-close', lb).addEventListener('click', function () { lb.close(); });
+    $$('[data-lb]', lb).forEach(function (b) {
+      b.addEventListener('click', function () { show(cur + Number(b.getAttribute('data-lb'))); });
+    });
+    lb.addEventListener('click', function (e) { if (e.target === lb) lb.close(); });
+    lb.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') show(cur + 1);
+      if (e.key === 'ArrowLeft') show(cur - 1);
+    });
+  }
+
   /* ---------- Count-up stats ---------- */
   var counters = $$('[data-count]');
   if (counters.length) {
@@ -476,6 +529,9 @@
       var em = form.querySelector('input[name="Email"]');
       var rt = form.querySelector('input[name="_replyto"]');
       if (em && rt) rt.value = em.value;
+      var smsBox = form.querySelector('[data-sms-consent]');
+      var smsField = form.querySelector('[data-sms-field]');
+      if (smsBox && smsField) smsField.value = smsBox.checked ? 'Yes' : 'No';
       var btn = form.querySelector('button[type="submit"]');
       if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
     });

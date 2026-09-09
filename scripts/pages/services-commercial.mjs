@@ -79,7 +79,8 @@ ${split({
       ['TPO', 'Our usual recommendation for low slope, on availability, installation and serviceability.'],
       ['PVC', 'Where grease, chemical exposure or specific project conditions rule TPO out.'],
       ['EPDM', 'A long established membrane that remains the right call on certain buildings.'],
-      ['Modified bitumen and coatings', 'Including GAF CoatingsPro liquid applied systems for roofs worth restoring.'],
+      ['Modified bitumen', 'Rolled asphalt sheet, seams sealed in three foot courses, matched to the rest of the system so the warranty stays whole.'],
+      ['Coatings', 'GAF CoatingsPro liquid applied systems for roofs worth restoring rather than replacing.'],
     ],
     image: 'tpo-aerial-hvac',
     alt: 'Aerial view of a white TPO membrane roof with rooftop HVAC equipment',
@@ -87,12 +88,12 @@ ${split({
     cta: btn('/commercial/tpo-roofing', 'More on TPO roofing', 'btn-dark'),
   })}
 
-${infoGrid('Systems', 'Commercial roofing systems we install', 'Membrane, coating and metal systems for low slope and steep slope commercial roofs.', [
+${infoGrid('Systems', 'Commercial roofing systems we install', 'Membrane, coating and metal systems for low slope and steep slope commercial roofs. On bid and contractor led work we install what the architect specifies, and flag it early if the specified material is wrong for the roof.', [
     { icon: 'flat', h: 'TPO', p: 'Thermoplastic single ply membrane. Our usual recommendation for commercial low slope work, and the most commonly specified system on this kind of building.' },
     { icon: 'shield', h: 'PVC', p: 'Where grease exhaust, chemical exposure or particular project conditions make TPO the wrong choice. Restaurants are the obvious example.' },
     { icon: 'building', h: 'EPDM', p: 'A long established synthetic rubber membrane. Still the correct answer on plenty of buildings, particularly where a proven track record matters more than the newest specification.' },
-    { icon: 'leaf', h: 'Modified bitumen', p: 'Multi ply asphaltic systems, appropriate on certain low slope applications and in re roofing situations over existing built up roofs.' },
-    { icon: 'bolt', h: 'Coatings and liquid applied', p: 'GAF CoatingsPro systems. A restoration route for roofs that are weathered but sound, extending service life without a full tear off.' },
+    { icon: 'leaf', h: 'Modified bitumen', p: 'Asphalt and fibreglass sheet, rolled out in three foot courses with the seams sealed. Every manufacturer makes it, so we match it to the rest of the roof, GAF mod bit on a GAF roof, and the warranty covers the whole assembly.' },
+    { icon: 'bolt', h: 'Coatings and liquid applied', p: 'Roll or spray applied silicone and other liquid systems, including GAF CoatingsPro. A restoration route for roofs that are weathered but sound, not a repair for a roof that has failed.' },
     { icon: 'metal', h: 'Commercial metal', p: 'Standing seam and corrugated systems on steeper commercial and industrial roof sections, and on agricultural buildings.' },
   ], { tint: true })}
 
