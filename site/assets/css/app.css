@@ -2154,7 +2154,7 @@ body.has-hero .site-head:not(.is-stuck) .brand-light { opacity: 1; }
       linear-gradient(180deg, rgba(16, 12, 12, .35) 0%, rgba(16, 12, 12, .2) 30%, rgba(16, 12, 12, .72) 62%, rgba(16, 12, 12, .94) 100%);
   }
   .hero-slide img { object-position: 62% 40%; }
-  .hero-inner { padding-top: clamp(9rem, 42vh, 15rem); }
+  .hero-inner { padding-top: clamp(5rem, 22vh, 8.5rem); }
 }
 
 
@@ -2375,6 +2375,66 @@ body.has-hero .site-head:not(.is-stuck) .brand-light { opacity: 1; }
 .lb-prev { left: 1rem; }
 .lb-next { right: 1rem; }
 @media (max-width: 640px) { .lightbox figure { padding: 4rem 1rem 1.5rem; } .lightbox img { max-width: 96vw; } .lb-nav { top: auto; bottom: 1rem; translate: none; } }
+
+/* ---------- Sixty second roof check ---------- */
+.rcheck-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(2rem, 1rem + 3vw, 5rem); align-items: start; }
+.rcheck-intro h2 { font-size: var(--t-h2); margin-block: .7rem 1rem; }
+.rcheck-intro h2 em { font-style: normal; color: var(--red); }
+.rcheck-intro > p { color: var(--body-dim); max-width: 46ch; }
+.rcheck-steps { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; gap: .55rem; }
+.rcheck-steps li { display: flex; align-items: center; gap: .8rem; color: rgba(16, 12, 12, .58); font-size: .9rem; transition: color .3s; }
+.rcheck-steps li b { font-family: var(--font-display); font-weight: 700; font-stretch: 112%; font-size: .72rem; letter-spacing: .12em; width: 2.2rem; }
+.rcheck-steps li::before { content: ''; width: 9px; height: 6px; background: var(--line-2); clip-path: polygon(0 100%, 50% 0, 100% 100%); flex: none; order: -1; transition: background .3s; }
+.rcheck-steps li.is-done { color: var(--body); }
+.rcheck-steps li.is-done::before { background: var(--gold); }
+.rcheck-steps li.is-live { color: var(--ink); font-weight: 600; }
+.rcheck-steps li.is-live::before { background: var(--red); }
+.rcheck-note { display: flex; align-items: center; gap: .55rem; margin-top: 1.8rem; font-size: .82rem; color: var(--body-dim); }
+.rcheck-note svg { width: 16px; height: 16px; color: var(--red); flex: none; }
+
+.rcheck-card { background: #fff; color: var(--body); border: 1px solid var(--line); border-radius: var(--r-xl); padding: clamp(1.4rem, 1rem + 1.6vw, 2.4rem); box-shadow: var(--sh-lg); min-height: 380px; display: grid; }
+.rcheck-step { border: 0; padding: 0; margin: 0; display: none; }
+.rcheck-step.is-live { display: block; animation: rcIn .35s var(--ease-out) both; }
+@keyframes rcIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.rcheck-step legend { font-family: var(--font-display); font-weight: 700; font-stretch: 112%; font-size: clamp(1.15rem, 1rem + .7vw, 1.5rem); letter-spacing: -.015em; color: var(--ink); margin-bottom: 1.2rem; line-height: 1.2; }
+.rcheck-step legend small { display: block; font: 500 .84rem/1.4 var(--font-body); color: var(--body-dim); margin-top: .3rem; letter-spacing: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: .6rem; }
+.chip { position: relative; }
+.chip input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.chip span { display: inline-flex; align-items: center; min-height: 44px; padding: .6rem 1.1rem; border-radius: var(--r-pill); border: 1px solid var(--line-2); background: #fff; color: var(--ink); font-weight: 550; font-size: .92rem; transition: background .25s, border-color .25s, color .25s, transform .25s var(--ease-out); }
+.chip:hover span { border-color: var(--ink); }
+.chip input:checked + span { background: var(--ink); border-color: var(--ink); color: #fff; transform: translateY(-1px); }
+.chip input:focus-visible + span { outline: 3px solid var(--red); outline-offset: 2px; }
+.rcheck-hint { font-size: .84rem; color: var(--red-deep); margin-top: .9rem; }
+.rcheck-nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1.8rem; padding-top: 1.2rem; border-top: 1px solid var(--line); }
+.rcheck-back { display: inline-flex; align-items: center; gap: .5rem; color: var(--body-dim); font-weight: 600; font-size: .84rem; letter-spacing: .04em; text-transform: uppercase; min-height: 44px; transition: color .25s; }
+.rcheck-back svg { width: 34px; height: 12px; }
+.rcheck-back:not(:disabled):hover { color: var(--ink); }
+.rcheck-back:disabled { opacity: .35; cursor: default; }
+.rcheck-count { font-family: var(--font-display); font-weight: 700; font-stretch: 112%; font-size: .84rem; letter-spacing: .1em; color: var(--body-dim); }
+.rcheck-count b { color: var(--ink); }
+
+.rcheck-result { animation: rcIn .4s var(--ease-out) both; }
+.rcheck-badge { display: inline-flex; align-items: center; gap: .5rem; padding: .4rem .9rem; border-radius: var(--r-pill); font-size: .74rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #fff; background: var(--red); }
+.rcheck-badge.is-watch { background: var(--gold); color: var(--ink); }
+.rcheck-badge.is-fine { background: var(--ink); }
+.rcheck-result h3 { font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2rem); letter-spacing: -.02em; color: var(--ink); margin: 1rem 0 1.1rem; line-height: 1.12; }
+.rcheck-points { list-style: none; padding: 0; margin: 0 0 1.5rem; display: grid; gap: .8rem; }
+.rcheck-points li { position: relative; padding-left: 1.4rem; font-size: .95rem; line-height: 1.55; color: var(--body); }
+.rcheck-points li::before { content: ''; position: absolute; left: 0; top: .55em; width: 11px; height: 7px; background: var(--red); clip-path: polygon(0 100%, 50% 0, 100% 100%); }
+.btn-ghost-ink { background: transparent; color: var(--ink); border: 1px solid var(--line-2); }
+.btn-ghost-ink:hover { border-color: var(--ink); color: var(--ink); }
+.rcheck-again { margin-top: 1.1rem; font-size: .82rem; color: var(--body-dim); text-decoration: underline; text-underline-offset: 3px; }
+.rcheck-again:hover { color: var(--ink); }
+.lead-card.is-prefilled { box-shadow: 0 0 0 3px var(--red), var(--sh-lg); transition: box-shadow .6s; }
+
+@media (max-width: 900px) {
+  .rcheck-grid { grid-template-columns: 1fr; gap: 1.6rem; }
+  .rcheck-steps { display: flex; flex-wrap: wrap; gap: .5rem 1.1rem; margin-top: 1.4rem; }
+  .rcheck-steps li b { width: auto; }
+  .rcheck-card { min-height: 0; }
+}
+@media (max-width: 640px) { .chip span { font-size: .8175rem; padding: .55rem .95rem; } }
 
 /* Print */
 @media print {

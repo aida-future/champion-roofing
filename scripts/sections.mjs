@@ -39,6 +39,84 @@ export function hero(slides, content) {
 </section>`;
 }
 
+/* ---------- Sixty second roof check ----------
+   Five questions, an honest verdict, no email gate. The answer is computed in
+   the browser from the same process facts the site already states, and the
+   book button carries the answers into the lead form so the office gets a
+   qualified enquiry instead of a blank one. */
+export function roofCheck() {
+  const chip = (name, value, label, type = 'radio') => `<label class="chip"><input type="${type}" name="${name}" value="${value}"><span>${label}</span></label>`;
+  return `
+<section class="sec sec-tint rcheck" data-rcheck>
+  <span class="ghost" aria-hidden="true">Check</span>
+  <div class="wrap rcheck-grid">
+    <div class="rcheck-intro" data-reveal>
+      ${eyebrow('Sixty second roof check')}
+      <h2>Not sure whether to call? <em>Answer five questions.</em></h2>
+      <p>No email needed to see the answer. It tells you honestly whether your roof is worth a free assessment, and what to do before you call your insurer.</p>
+      <ol class="rcheck-steps" aria-hidden="true">
+        <li class="is-live"><b>01</b><span>Age</span></li>
+        <li><b>02</b><span>Storms</span></li>
+        <li><b>03</b><span>Signs</span></li>
+        <li><b>04</b><span>Roof</span></li>
+        <li><b>05</b><span>Your street</span></li>
+      </ol>
+      <p class="rcheck-note">${ICONS.shield} Nothing here is a diagnosis. The assessment is, and it costs nothing.</p>
+    </div>
+    <div class="rcheck-card" data-reveal data-reveal-delay="1">
+      <form data-rcheck-form novalidate>
+        <fieldset class="rcheck-step is-live" data-step="0">
+          <legend>How old is your roof?</legend>
+          <div class="chips">
+            ${chip('age', 'new', '0 to 5 years')}${chip('age', 'mid', '6 to 12 years')}${chip('age', 'older', '13 to 20 years')}${chip('age', 'old', 'Over 20 years')}${chip('age', 'unsure', 'Not sure')}
+          </div>
+        </fieldset>
+        <fieldset class="rcheck-step" data-step="1">
+          <legend>Any hail or high wind at your address in the last twelve months?</legend>
+          <div class="chips">
+            ${chip('storm', 'yes', 'Yes')}${chip('storm', 'unsure', 'Not sure')}${chip('storm', 'no', 'No')}
+          </div>
+        </fieldset>
+        <fieldset class="rcheck-step" data-step="2">
+          <legend>What have you noticed? <small>Pick everything that applies.</small></legend>
+          <div class="chips">
+            ${chip('signs', 'stain', 'A stain on a ceiling', 'checkbox')}${chip('signs', 'yard', 'Shingles in the yard', 'checkbox')}${chip('signs', 'granules', 'Granules in the gutters', 'checkbox')}${chip('signs', 'lifted', 'Lifted or missing shingles', 'checkbox')}${chip('signs', 'dents', 'Dents on gutters or vents', 'checkbox')}${chip('signs', 'none', 'Nothing, just checking', 'checkbox')}
+          </div>
+        </fieldset>
+        <fieldset class="rcheck-step" data-step="3">
+          <legend>What kind of roof is it?</legend>
+          <div class="chips">
+            ${chip('type', 'shingle', 'Asphalt shingle')}${chip('type', 'tile', 'Tile or slate')}${chip('type', 'metal', 'Metal')}${chip('type', 'flat', 'Flat or commercial')}${chip('type', 'unsure', 'Not sure')}
+          </div>
+        </fieldset>
+        <fieldset class="rcheck-step" data-step="4">
+          <legend>Are neighbours on your street getting new roofs?</legend>
+          <div class="chips">
+            ${chip('street', 'yes', 'Yes, several')}${chip('street', 'some', 'One or two')}${chip('street', 'no', 'No')}
+          </div>
+        </fieldset>
+        <p class="rcheck-hint" data-rcheck-hint hidden>Pick one to continue.</p>
+        <div class="rcheck-nav">
+          <button class="rcheck-back" type="button" data-rcheck-back disabled>${ICONS.arrowLongL} Back</button>
+          <span class="rcheck-count"><b data-rcheck-cur>1</b> / 5</span>
+          <button class="btn" type="button" data-rcheck-next>Next${ICONS.arrow}</button>
+        </div>
+      </form>
+      <div class="rcheck-result" data-rcheck-result hidden>
+        <span class="rcheck-badge" data-r-badge></span>
+        <h3 data-r-title></h3>
+        <ul class="rcheck-points" data-r-points></ul>
+        <div class="btn-row">
+          <button class="btn" type="button" data-r-book>Book a free assessment${ICONS.arrow}</button>
+          <a class="btn btn-ghost-ink" href="tel:${BIZ.phoneRaw}">${ICONS.phone}${BIZ.phone}</a>
+        </div>
+        <button class="rcheck-again" type="button" data-r-again>Start over</button>
+      </div>
+    </div>
+  </div>
+</section>`;
+}
+
 /* ---------- Docked lead form ---------- */
 export function leadForm({ docked = true, title, blurb, compact = false } = {}) {
   return `

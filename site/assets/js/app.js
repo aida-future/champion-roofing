@@ -313,6 +313,101 @@
     });
   }
 
+  /* ---------- Sixty second roof check ---------- */
+  $$('[data-rcheck]').forEach(function (root) {
+    var form = $('[data-rcheck-form]', root);
+    var steps = $$('.rcheck-step', form);
+    var marks = $$('.rcheck-steps li', root);
+    var back = $('[data-rcheck-back]', root);
+    var next = $('[data-rcheck-next]', root);
+    var hint = $('[data-rcheck-hint]', root);
+    var cur = $('[data-rcheck-cur]', root);
+    var result = $('[data-rcheck-result]', root);
+    var i = 0;
+
+    function paint() {
+      steps.forEach(function (s, n) { s.classList.toggle('is-live', n === i); });
+      marks.forEach(function (m, n) { m.classList.toggle('is-live', n === i); m.classList.toggle('is-done', n < i); });
+      back.disabled = i === 0;
+      cur.textContent = String(i + 1);
+      next.innerHTML = (i === steps.length - 1 ? 'See the answer' : 'Next') + next.querySelector('svg').outerHTML;
+      hint.hidden = true;
+    }
+    function picked(step) { return $$('input:checked', step).map(function (el) { return el.value; }); }
+    // The "nothing" chip is exclusive with the others.
+    // Multi choice moves on by itself: at once for "nothing", otherwise a
+    // beat after the last pick so several boxes can still be ticked.
+    var multiTimer;
+    $$('input[name="signs"]', form).forEach(function (box) {
+      box.addEventListener('change', function () {
+        if (box.value === 'none' && box.checked) $$('input[name="signs"]', form).forEach(function (o) { if (o !== box) o.checked = false; });
+        else if (box.checked) { var none = $('input[name="signs"][value="none"]', form); if (none) none.checked = false; }
+        clearTimeout(multiTimer);
+        if (!picked(steps[i]).length) return;
+        multiTimer = setTimeout(function () { if (i === 2) { i++; paint(); } }, box.value === 'none' ? 260 : 1400);
+      });
+    });
+    // A single choice advances on its own; multi choice waits for Next.
+    $$('input[type="radio"]', form).forEach(function (r) {
+      r.addEventListener('change', function () { setTimeout(function () { if (i < steps.length - 1) { i++; paint(); } else finish(); }, 260); });
+    });
+    next.addEventListener('click', function () {
+      if (!picked(steps[i]).length) { hint.hidden = false; return; }
+      if (i < steps.length - 1) { i++; paint(); } else finish();
+    });
+    back.addEventListener('click', function () { if (i > 0) { i--; paint(); } });
+
+    var SERVICE = { shingle: 'Roof inspection or assessment', tile: 'Specialty or tile roofing', metal: 'Metal roofing', flat: 'Commercial roofing', unsure: 'Roof inspection or assessment' };
+    var LABEL = { stain: 'a stain on a ceiling', yard: 'shingles in the yard', granules: 'granules in the gutters', lifted: 'lifted or missing shingles', dents: 'dents on gutters or vents' };
+    var AGE = { new: '0 to 5 years old', mid: '6 to 12 years old', older: '13 to 20 years old', old: 'over 20 years old', unsure: 'age unknown' };
+
+    function finish() {
+      var age = picked(steps[0])[0], storm = picked(steps[1])[0], signs = picked(steps[2]).filter(function (v) { return v !== 'none'; });
+      var type = picked(steps[3])[0], street = picked(steps[4])[0];
+      var score = signs.length * 2 + (storm === 'yes' ? 2 : storm === 'unsure' ? 1 : 0) + (age === 'older' ? 1 : age === 'old' ? 2 : 0) + (street === 'yes' ? 1 : 0);
+      var tier = score >= 4 ? 'now' : score >= 2 ? 'watch' : 'fine';
+      var badge = $('[data-r-badge]', result), title = $('[data-r-title]', result), list = $('[data-r-points]', result);
+      badge.className = 'rcheck-badge' + (tier === 'watch' ? ' is-watch' : tier === 'fine' ? ' is-fine' : '');
+      badge.textContent = tier === 'now' ? 'Worth a free assessment now' : tier === 'watch' ? 'Worth a look before storm season' : 'Probably fine';
+      title.textContent = tier === 'now' ? 'Get it looked at before you do anything else.' : tier === 'watch' ? 'Nothing urgent, but worth knowing for certain.' : 'If your roof is fine, we will tell you it is fine.';
+      var pts = [];
+      if ((storm === 'yes' || storm === 'unsure') && street !== 'no') pts.push('Hail is directional. Do not call in a claim yet: get the roof assessed first. If only one slope took damage, a claim can pay for a repair rather than a replacement and leave you under your deductible with a slope that no longer matches.');
+      else if (storm === 'yes') pts.push('After a storm, damage is often invisible from the ground. Hail bruises a shingle rather than putting a hole in it.');
+      if (signs.indexOf('stain') > -1) pts.push('A ceiling stain usually starts several feet from where it shows. If the drone imagery cannot find the entry point, we get into the attic.');
+      if (signs.indexOf('granules') > -1) pts.push('Granules in the gutters are the shingle surface wearing away, sometimes from hail, sometimes from age. Either way it is worth a look.');
+      if (signs.indexOf('lifted') > -1 || signs.indexOf('yard') > -1) pts.push('Lifted or missing shingles let water reach the decking. Small now, bigger after the next storm.');
+      if (signs.indexOf('dents') > -1) pts.push('Dents on soft metals are how hail gets corroborated. They are also a separate conversation with your carrier.');
+      if (age === 'old') pts.push('A roof past twenty years is near the end of its service life, so a repair may not be the best use of the money. We will tell you which it is.');
+      if (type === 'tile') pts.push('Tile and slate need a crew that knows how to move across the roof. That is most of what we are known for.');
+      if (!pts.length) pts.push('No signs, and a quiet year for storms. If you want certainty anyway, the assessment is still free and the report is emailed either way.');
+      pts.push('Three drone laps, the findings talked through on site, a written report by email. No charge if the roof is fine.');
+      list.innerHTML = pts.map(function (t) { return '<li>' + t + '</li>'; }).join('');
+      form.hidden = true;
+      result.hidden = false;
+      root.setAttribute('data-rcheck-summary', 'Roof check: ' + (type && type !== 'unsure' ? type + ' roof' : 'roof') + ', ' + (AGE[age] || 'age unknown') + '. ' +
+        (storm === 'yes' ? 'Storm in the last twelve months. ' : storm === 'unsure' ? 'Possible storm in the last twelve months. ' : 'No recent storm. ') +
+        (signs.length ? 'Noticed ' + signs.map(function (v) { return LABEL[v]; }).join(', ') + '. ' : 'No visible signs. ') +
+        (street === 'yes' ? 'Several neighbours getting new roofs.' : street === 'some' ? 'One or two neighbours getting new roofs.' : ''));
+      root.setAttribute('data-rcheck-service', (storm === 'yes' && signs.length) ? 'Storm or hail damage' : (SERVICE[type] || SERVICE.unsure));
+      if (result.scrollIntoView) result.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
+    }
+    $('[data-r-again]', root).addEventListener('click', function () {
+      form.reset(); i = 0; paint(); result.hidden = true; form.hidden = false;
+    });
+    // Carry the answers into the lead form so the office gets a qualified enquiry.
+    $('[data-r-book]', root).addEventListener('click', function () {
+      var card = $('.lead-card'), svc = $('#lf-service'), msg = $('#lf-msg'), name = $('#lf-name');
+      if (svc) { var want = root.getAttribute('data-rcheck-service'); $$('option', svc).forEach(function (o) { if (o.textContent === want) svc.value = o.textContent; }); }
+      if (msg && !msg.value.trim()) msg.value = root.getAttribute('data-rcheck-summary') || '';
+      if (card) {
+        card.scrollIntoView({ block: 'start', behavior: reduced ? 'auto' : 'smooth' });
+        card.classList.add('is-prefilled');
+        setTimeout(function () { card.classList.remove('is-prefilled'); if (name) name.focus({ preventScroll: true }); }, 1400);
+      } else { location.href = '/contact'; }
+    });
+    paint();
+  });
+
   /* ---------- Count-up stats ---------- */
   var counters = $$('[data-count]');
   if (counters.length) {

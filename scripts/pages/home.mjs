@@ -3,7 +3,7 @@ import { ICONS, btn, img, eyebrow, secHead, checks } from '../lib.mjs';
 import {
   hero, leadForm, ticker, statStrip, steps, droneSection, materialExplorer,
   compareSection, reviewSection, pullQuote, areasSection, ctaBand, faqSection,
-  serviceGrid, serviceShowcase, split,
+  serviceGrid, serviceShowcase, split, roofCheck,
 } from '../sections.mjs';
 
 const FAQS = [
@@ -153,6 +153,8 @@ ${serviceShowcase(
 ${reviewSection({ tint: true })}
 
 ${droneSection()}
+
+${roofCheck()}
 
 ${compareSection()}
 
