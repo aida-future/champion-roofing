@@ -727,11 +727,21 @@ function floatCardHtml(fc) {
 
 /* ---------- Mosaic gallery ---------- */
 export function mosaic(items) {
-  return `<div class="mosaic">
-    ${items.map((t) => `<figure class="tile${t.size ? ' ' + t.size : ''}" data-reveal>
-      ${img(t.img, t.alt, { sizes: t.size === 'big' ? '(max-width:760px) 100vw, 50vw' : '(max-width:760px) 100vw, 25vw', ratio: t.size === 'big' ? 1 : t.size === 'wide' ? 0.5 : 1 })}
-      <figcaption>${t.cap}</figcaption>
-    </figure>`).join('')}
+  // Categories in first-seen order, each with its count, for the filter row.
+  const cats = [];
+  items.forEach((t) => { const c = cats.find((x) => x.key === t.cat); if (c) c.n++; else cats.push({ key: t.cat, label: t.catLabel || t.cat, n: 1 }); });
+  return `<div class="gal" data-gallery>
+    <div class="gal-filters" role="group" aria-label="Filter projects">
+      <button class="gal-chip is-on" type="button" data-gal="all" aria-pressed="true">Everything <b>${items.length}</b></button>
+      ${cats.map((c) => `<button class="gal-chip" type="button" data-gal="${c.key}" aria-pressed="false">${c.label} <b>${c.n}</b></button>`).join('')}
+    </div>
+    <div class="mosaic">
+      ${items.map((t, i) => `<figure class="tile" data-cat="${t.cat}" data-reveal data-reveal-delay="${i % 3}">
+        <span class="tile-media">${img(t.img, t.alt, { sizes: '(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw', ratio: 2 / 3 })}</span>
+        <figcaption>${t.cap}</figcaption>
+      </figure>`).join('')}
+    </div>
+    <p class="gal-empty" data-gal-empty hidden>Nothing in this group yet. Photos are added as jobs finish.</p>
   </div>`;
 }
 

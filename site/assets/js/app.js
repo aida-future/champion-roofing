@@ -285,10 +285,12 @@
       });
       return best;
     }
+    // Navigation runs over the tiles the current filter leaves visible.
+    var live = tiles.slice();
     function show(i) {
-      cur = (i + tiles.length) % tiles.length;
-      var im = $('img', tiles[cur]);
-      var cap = $('figcaption', tiles[cur]);
+      cur = (i + live.length) % live.length;
+      var im = $('img', live[cur]);
+      var cap = $('figcaption', live[cur]);
       lbImg.src = largest(im);
       lbImg.alt = im.alt;
       lbCap.textContent = cap ? cap.textContent : '';
@@ -298,7 +300,7 @@
       t.setAttribute('tabindex', '0');
       t.setAttribute('role', 'button');
       t.setAttribute('aria-label', 'View larger: ' + (cap ? cap.textContent : 'project photo'));
-      var openIt = function () { show(i); lb.showModal(); };
+      var openIt = function () { live = tiles.filter(function (x) { return !x.hidden; }); show(live.indexOf(t)); lb.showModal(); };
       t.addEventListener('click', openIt);
       t.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openIt(); } });
     });
@@ -311,7 +313,76 @@
       if (e.key === 'ArrowRight') show(cur + 1);
       if (e.key === 'ArrowLeft') show(cur - 1);
     });
+
+    /* Loupe: a lens that follows the pointer over a frame and shows the
+       photograph enlarged. The maths undoes object-fit cover, so the point
+       under the cursor is the point in the middle of the lens. Mouse only. */
+    if (finePointer && !reduced) {
+      var LENS = 300, ZOOM = 2.3;
+      var lens = document.createElement('div');
+      lens.className = 'loupe';
+      lens.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(lens);
+      var grid = $('.mosaic');
+      var raf = null, last = null, activeMedia = null;
+      function place() {
+        raf = null;
+        if (!activeMedia || !last) return;
+        var img = $('img', activeMedia);
+        var r = activeMedia.getBoundingClientRect();
+        var nw = img.naturalWidth || r.width, nh = img.naturalHeight || r.height;
+        var nr = nw / nh, fr = r.width / r.height;
+        var pos = (getComputedStyle(img).objectPosition || '50% 50%').split(' ');
+        var fx = parseFloat(pos[0]) / 100, fy = parseFloat(pos[1] || '50%') / 100;
+        var w, h, ox, oy;
+        if (nr > fr) { h = r.height; w = h * nr; ox = (r.width - w) * fx; oy = 0; }
+        else { w = r.width; h = w / nr; ox = 0; oy = (r.height - h) * fy; }
+        var px = (last.x - r.left - ox) / w, py = (last.y - r.top - oy) / h;
+        lens.style.backgroundSize = (w * ZOOM) + 'px ' + (h * ZOOM) + 'px';
+        lens.style.backgroundPosition = (-(px * w * ZOOM - LENS / 2)) + 'px ' + (-(py * h * ZOOM - LENS / 2)) + 'px';
+        lens.style.transform = 'translate(' + (last.x - LENS / 2) + 'px,' + (last.y - LENS / 2) + 'px)';
+      }
+      tiles.forEach(function (t) {
+        var media = $('.tile-media', t);
+        if (!media) return;
+        media.addEventListener('pointerenter', function (e) {
+          activeMedia = media;
+          lens.style.backgroundImage = 'url("' + largest($('img', media)) + '")';
+          lens.classList.add('is-on');
+          if (grid) grid.classList.add('is-looking');
+          last = { x: e.clientX, y: e.clientY };
+          place();
+        });
+        media.addEventListener('pointermove', function (e) {
+          last = { x: e.clientX, y: e.clientY };
+          if (!raf) raf = requestAnimationFrame(place);
+        });
+        media.addEventListener('pointerleave', function () {
+          activeMedia = null;
+          lens.classList.remove('is-on');
+          if (grid) grid.classList.remove('is-looking');
+        });
+      });
+      // The modal covers the grid without a pointerleave, so hide on open.
+      tiles.forEach(function (t) { t.addEventListener('click', function () { lens.classList.remove('is-on'); if (grid) grid.classList.remove('is-looking'); }); });
+    }
   }
+
+  /* ---------- Gallery filters ---------- */
+  $$('[data-gallery]').forEach(function (gal) {
+    var chips = $$('[data-gal]', gal);
+    var items = $$('.tile', gal);
+    var empty = $('[data-gal-empty]', gal);
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var key = chip.getAttribute('data-gal');
+        chips.forEach(function (c) { var on = c === chip; c.classList.toggle('is-on', on); c.setAttribute('aria-pressed', String(on)); });
+        var shown = 0;
+        items.forEach(function (t) { var vis = key === 'all' || t.getAttribute('data-cat') === key; t.hidden = !vis; if (vis) shown++; });
+        if (empty) empty.hidden = shown > 0;
+      });
+    });
+  });
 
   /* ---------- Sixty second roof check ---------- */
   $$('[data-rcheck]').forEach(function (root) {

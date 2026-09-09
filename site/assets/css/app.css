@@ -1834,34 +1834,44 @@ body.has-hero .site-head:not(.is-stuck) .brand-light { opacity: 1; }
 }
 .area-chip:hover, .area-chip.is-live { background: var(--red); border-color: var(--red); color: #fff; }
 
-/* ---------- Gallery mosaic ---------- */
-.mosaic {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  /* Explicit row height: tiles size from the grid, not from their own images. */
-  grid-auto-rows: clamp(170px, 14.5vw, 250px);
-  gap: var(--gap);
-  grid-auto-flow: dense;
+/* ---------- Gallery ----------
+   Filter chips over a uniform three across grid of 3:2 frames, each numbered
+   and labelled with its group, caption set beneath rather than over the
+   photograph. Four across on large screens, two on tablet, one on phones. */
+.gal-filters { display: flex; flex-wrap: wrap; gap: .55rem; margin-bottom: clamp(1.4rem, 1rem + 1.4vw, 2.2rem); }
+.gal-chip { display: inline-flex; align-items: center; gap: .5rem; min-height: 42px; padding: .55rem 1rem; border-radius: var(--r-pill); border: 1px solid var(--line-2); background: #fff; color: var(--ink); font-weight: 600; font-size: .86rem; transition: background .25s, border-color .25s, color .25s; }
+.gal-chip b { font-family: var(--font-display); font-weight: 700; font-stretch: 112%; font-size: .72rem; letter-spacing: .06em; padding: .15rem .5rem; border-radius: var(--r-pill); background: var(--paper-2); color: var(--body-dim); }
+.gal-chip:hover { border-color: var(--ink); }
+.gal-chip.is-on { background: var(--ink); border-color: var(--ink); color: #fff; }
+.gal-chip.is-on b { background: var(--red); color: #fff; }
+.mosaic { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1rem, .8rem + 1vw, 1.8rem) var(--gap); }
+.tile { position: relative; margin: 0; display: grid; gap: .7rem; cursor: zoom-in; }
+.tile[hidden] { display: none; }
+.tile-media { position: relative; display: block; aspect-ratio: 3 / 2; border-radius: var(--r-lg); overflow: hidden; background: var(--paper-3); }
+.tile-media picture, .tile-media img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.tile-media img { object-fit: cover; }
+.tile-media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(16,12,12,.28), transparent 45%); opacity: 0; transition: opacity .4s; }
+.tile:hover .tile-media::after { opacity: 1; }
+.tile figcaption { font-size: .9rem; color: var(--body); line-height: 1.45; padding-inline: .2rem; }
+.tile:focus-visible { outline: 3px solid var(--red); outline-offset: 4px; border-radius: var(--r-lg); }
+.gal-empty { margin-top: 1.4rem; color: var(--body-dim); font-size: .95rem; }
+/* Loupe */
+.loupe {
+  position: fixed; top: 0; left: 0; z-index: 150;
+  width: 300px; height: 300px; border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, .95);
+  box-shadow: 0 24px 60px rgba(16, 12, 12, .45), 0 0 0 1px rgba(16, 12, 12, .25);
+  background-color: var(--ink); background-repeat: no-repeat;
+  pointer-events: none; opacity: 0; scale: .8;
+  transition: opacity .25s var(--ease-out), scale .35s var(--ease-out);
+  will-change: transform;
 }
-.tile { position: relative; border-radius: var(--r-lg); overflow: hidden; background: var(--paper-3); height: 100%; }
-.tile img { width: 100%; height: 100%; object-fit: cover; }
-.tile.big { grid-column: span 2; grid-row: span 2; }
-.tile.wide { grid-column: span 2; }
-.tile::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(16,12,12,.72), transparent 52%); opacity: 0; transition: opacity .4s; }
-.tile:hover::after { opacity: 1; }
-.tile figcaption {
-  position: absolute;
-  left: 1.1rem; right: 1.1rem; bottom: 1.1rem;
-  z-index: 2;
-  color: #fff;
-  font-size: .88rem;
-  font-weight: 600;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: .4s var(--ease-out);
-}
-.tile:hover figcaption { opacity: 1; transform: none; }
-
+.loupe.is-on { opacity: 1; scale: 1; }
+.loupe::after { content: ''; position: absolute; inset: 50% auto auto 50%; width: 28px; height: 28px; translate: -50% -50%; border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, .65); }
+.tile-media { transition: opacity .35s; }
+.mosaic.is-looking .tile:not(:hover) .tile-media { opacity: .45; }
+@media (pointer: fine) { .mosaic.is-looking .tile-media { cursor: none; } }
+@media (min-width: 1920px) { .mosaic { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 /* ---------- Contact panel ---------- */
 .contact-panel {
   background: var(--ink);
@@ -2014,7 +2024,7 @@ body.has-hero .site-head:not(.is-stuck) .brand-light { opacity: 1; }
   .drone-wrap, .areas, .split { grid-template-columns: 1fr; }
   .split.rev .split-media { order: -1; }
   .foot-grid { grid-template-columns: repeat(2, 1fr); }
-  .mosaic { grid-template-columns: repeat(2, 1fr); }
+  .mosaic { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .callbar { display: flex; }
   body { padding-bottom: 72px; }
   .field-grid { grid-template-columns: repeat(2, 1fr); }
@@ -2032,7 +2042,6 @@ body.has-hero .site-head:not(.is-stuck) .brand-light { opacity: 1; }
   /* The credential bar stays inside the image on mobile too. */
   .split-media { box-shadow: var(--sh); }
   .foot-bar { flex-direction: column; }
-  .tile.big, .tile.wide { grid-column: span 2; grid-row: span 1; }
   .explorer-tabs { grid-template-columns: 1fr; }
   .pullquote { max-width: 100%; }
   .pullquote blockquote { max-width: 100%; }
@@ -2042,7 +2051,6 @@ body.has-hero .site-head:not(.is-stuck) .brand-light { opacity: 1; }
   .field-grid { grid-template-columns: 1fr; }
   .field.wide { grid-column: span 1; }
   .mosaic { grid-template-columns: 1fr; }
-  .tile.big, .tile.wide { grid-column: span 1; }
   .stat-grid { grid-template-columns: 1fr; }
   .foot-grid { grid-template-columns: 1fr; }
   .btn { width: 100%; }
@@ -2355,8 +2363,6 @@ body.has-hero .site-head:not(.is-stuck) .brand-light { opacity: 1; }
 }
 
 /* ---------- Our work: lightbox ---------- */
-.tile { cursor: zoom-in; }
-.tile:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
 .lightbox { border: 0; padding: 0; background: transparent; max-width: none; max-height: none; width: 100vw; height: 100vh; display: none; place-items: center; }
 .lightbox[open] { display: grid; }
 .lightbox::backdrop { background: rgba(16, 12, 12, .94); backdrop-filter: blur(6px); }

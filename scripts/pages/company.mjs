@@ -231,18 +231,18 @@ ${pageHero({
   <div class="wrap-wide">
     ${secHead('The portfolio', 'Recent Champion Roofing projects', 'Grouped by the kind of work rather than dressed up as case studies. What you see is what was on the roof.')}
     ${mosaic([
-      { img: 'real-luxury-brick-home', alt: 'A brick and stone home in Oklahoma City with a completed designer shingle roof and a Champion Roofing yard sign', cap: 'Designer shingle roof, brick and stone residence', size: 'big' },
-      { img: 'real-tile-complete', alt: 'A completed clay tile roof on a stucco home with arched windows', cap: 'Clay tile roof, completed' },
-      { img: 'real-tile-during', alt: 'A crew member setting clay tile at the ridge during installation', cap: 'The same tile roof, mid install' },
-      { img: 'real-commercial-drone-office', alt: 'Drone photograph of a commercial office building with a new roof', cap: 'Commercial office building, surveyed by drone', size: 'wide' },
-      { img: 'real-commercial-campus', alt: 'A large commercial campus building with a fountain in the foreground', cap: 'Commercial campus roof' },
-      { img: 'real-french-brick-estate', alt: 'A French style brick estate with a new architectural shingle roof', cap: 'Estate re roof, north metro' },
-      { img: 'real-ranch-new-roof', alt: 'A single storey ranch home with a newly installed dark shingle roof', cap: 'Ranch home, new shingle roof' },
-      { img: 'real-timber-pavilion', alt: 'A timber framed golf simulator pavilion with a new shingle roof', cap: 'Golf simulator pavilion, new construction' },
-      { img: 'real-flat-roof-drone', alt: 'Drone view along the coping of a commercial low slope roof', cap: 'Low slope commercial, coping detail' },
-      { img: 'real-multifamily-sign', alt: 'A two storey multifamily building with a Champion Roofing yard sign in front', cap: 'Multifamily property re roof' },
-      { img: 'real-supply-truck', alt: 'A Champion Roofing materials delivery truck at a coned off Oklahoma City job site', cap: 'Materials delivery, site coned off' },
-      { img: 'real-property-staging', alt: 'Protective staging and covers set up around a house before roofing work', cap: 'Property protected before tear off' },
+      { img: 'real-luxury-brick-home', alt: 'A brick and stone home in Oklahoma City with a completed designer shingle roof and a Champion Roofing yard sign', cap: 'Designer shingle roof, brick and stone residence', cat: 'residential', catLabel: 'Residential' },
+      { img: 'real-tile-complete', alt: 'A completed clay tile roof on a stucco home with arched windows', cap: 'Clay tile roof, completed', cat: 'specialty', catLabel: 'Tile and slate' },
+      { img: 'real-tile-during', alt: 'A crew member setting clay tile at the ridge during installation', cap: 'The same tile roof, mid install', cat: 'specialty', catLabel: 'Tile and slate' },
+      { img: 'real-commercial-drone-office', alt: 'Drone photograph of a commercial office building with a new roof', cap: 'Commercial office building, surveyed by drone', cat: 'commercial', catLabel: 'Commercial' },
+      { img: 'real-commercial-campus', alt: 'A large commercial campus building with a fountain in the foreground', cap: 'Commercial campus roof', cat: 'commercial', catLabel: 'Commercial' },
+      { img: 'real-french-brick-estate', alt: 'A French style brick estate with a new architectural shingle roof', cap: 'Estate re roof, north metro', cat: 'residential', catLabel: 'Residential' },
+      { img: 'real-ranch-new-roof', alt: 'A single storey ranch home with a newly installed dark shingle roof', cap: 'Ranch home, new shingle roof', cat: 'residential', catLabel: 'Residential' },
+      { img: 'real-timber-pavilion', alt: 'A timber framed golf simulator pavilion with a new shingle roof', cap: 'Golf simulator pavilion, new construction', cat: 'residential', catLabel: 'Residential' },
+      { img: 'real-flat-roof-drone', alt: 'Drone view along the coping of a commercial low slope roof', cap: 'Low slope commercial, coping detail', cat: 'commercial', catLabel: 'Commercial' },
+      { img: 'real-multifamily-sign', alt: 'A two storey multifamily building with a Champion Roofing yard sign in front', cap: 'Multifamily property re roof', cat: 'commercial', catLabel: 'Commercial' },
+      { img: 'real-supply-truck', alt: 'A Champion Roofing materials delivery truck at a coned off Oklahoma City job site', cap: 'Materials delivery, site coned off', cat: 'onsite', catLabel: 'On site' },
+      { img: 'real-property-staging', alt: 'Protective staging and covers set up around a house before roofing work', cap: 'Property protected before tear off', cat: 'onsite', catLabel: 'On site' },
     ])}
   </div>
 </section>
